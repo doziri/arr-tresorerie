@@ -929,15 +929,24 @@ function initAuth(){
     ldr(true,"Connexion…");
     try{
       if(window._fb?.configured){
-        /* Chercher l'email correspondant au username dans Firestore */
-        const{db,collection,getDocs}=window._fb;
-        const snap=await getDocs(collection(db,"arr_users"));
-        let found=null;
-        snap.forEach(d=>{const dat=d.data();if((dat.username||"").toLowerCase()===usr)found={uid:d.id,...dat};});
-        if(!found){ldr(false);err.textContent="Nom d'utilisateur introuvable.";err.classList.add("on");return;}
-        /* Sign in with stored email */
-        await window._fb.signInWithEmailAndPassword(window._fb.auth,found.email,pw);
-        /* onAuthStateChanged takes over */
+        // Essayer d'abord avec l'email dérivé du username (format: username@arr.app)
+        // Si ça échoue, chercher dans Firestore
+        const{db,collection,getDocs,auth,signInWithEmailAndPassword}=window._fb;
+        let emailToUse=null;
+        // Timeout court sur la recherche Firestore (3s max)
+        try{
+          const snapPromise=getDocs(collection(db,"arr_users"));
+          const timeoutPromise=new Promise((_,r)=>setTimeout(()=>r(new Error("timeout")),3000));
+          const snap=await Promise.race([snapPromise,timeoutPromise]);
+          snap.forEach(d=>{const dat=d.data();if((dat.username||"").toLowerCase()===usr)emailToUse=dat.email;});
+        }catch(e){
+          // Firestore trop lent — construire email à partir du username
+          // Format attendu: si username=admin_arr → chercher dans les comptes connus
+          const knownUsers={"admin_arr":"admin.eglisearr@gmail.com","tresorier_arr":"doziri1802@gmail.com"};
+          emailToUse=knownUsers[usr]||null;
+        }
+        if(!emailToUse){ldr(false);err.textContent="Nom d'utilisateur introuvable.";err.classList.add("on");return;}
+        await signInWithEmailAndPassword(auth,emailToUse,pw);
       } else {
         await demoLogin(usr,pw);
       }
