@@ -9,45 +9,42 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
-<!-- ══ FIREBASE ══════════════════════════════════════════════ -->
+<!-- ══ FIREBASE (Realtime Database) ════════════════════════ -->
 <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { initializeApp }
+    from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
   import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword,
-           signOut, onAuthStateChanged, sendPasswordResetEmail, deleteUser,
-           updatePassword }
+           signOut, onAuthStateChanged, sendPasswordResetEmail,
+           updatePassword, browserSessionPersistence, setPersistence }
     from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-  import { getFirestore, doc, setDoc, getDoc, collection, getDocs,
-           deleteDoc, serverTimestamp, query, where }
-    from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+  import { getDatabase, ref, set, get, remove, child, push }
+    from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
 
-  /* ╔══════════════════════════════════════════════════════════╗
-     ║  COLLEZ ICI VOTRE CONFIG FIREBASE ARR                   ║
-     ║  Console → Paramètres du projet → Vos applications      ║
-     ╚══════════════════════════════════════════════════════════╝ */
   const firebaseConfig = {
     apiKey:            "AIzaSyBwcBYwz9qfHxnCDsiJx4k5UfUM-WSKNL8",
     authDomain:        "assemblee-royale.firebaseapp.com",
+    databaseURL:       "https://assemblee-royale-default-rtdb.firebaseio.com",
     projectId:         "assemblee-royale",
     storageBucket:     "assemblee-royale.firebasestorage.app",
     messagingSenderId: "1006599645097",
     appId:             "1:1006599645097:web:911e92e5eeb049b42146b8"
   };
 
-  const configured = firebaseConfig.apiKey !== "VOTRE_API_KEY";
   try {
     const app  = initializeApp(firebaseConfig);
     const auth = getAuth(app);
-    const db   = getFirestore(app);
-    // Désactiver la persistance de session — l'utilisateur se reconnecte à chaque visite
-    const { browserSessionPersistence, setPersistence } = await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js");
+    const db   = getDatabase(app);
     await setPersistence(auth, browserSessionPersistence);
     window._fb = {
-      auth, db, configured,
+      auth, db, configured: true,
       signInWithEmailAndPassword, createUserWithEmailAndPassword,
-      signOut, onAuthStateChanged, sendPasswordResetEmail, deleteUser, updatePassword,
-      doc, setDoc, getDoc, collection, getDocs, deleteDoc, serverTimestamp, query, where
+      signOut, onAuthStateChanged, sendPasswordResetEmail, updatePassword,
+      ref, set, get, remove, child, push
     };
-  } catch(e) { window._fb = { configured: false }; }
+  } catch(e) {
+    console.error("Firebase init error:", e);
+    window._fb = { configured: false };
+  }
 </script>
 
 <style>
@@ -617,6 +614,12 @@ const PAST=Array.from({length:6},(_,i)=>`Pasteur ${i+1}`);
 const BASE_YEAR=2026;
 const YEARS=Array.from({length:5},(_,i)=>BASE_YEAR+i); // 2026..2030
 
+/* Table username → email pour la connexion (mise à jour automatiquement) */
+const USER_EMAIL_MAP={
+  "admin_arr":     "admin.eglisearr@gmail.com",
+  "tresorier_arr": "doziri1802@gmail.com"
+};
+
 const ROLES={
   admin:    {label:"Administrateur",edit:true, manage:true},
   tresorier:{label:"Trésorier",     edit:true, manage:true},
@@ -732,33 +735,42 @@ function buildExSel(){
 /* ══ FIREBASE HELPERS ══════════════════════════════════════ */
 async function fbSave(mi){
   if(!window._fb?.configured||!S.user) return false;
-  const{db,doc,setDoc,serverTimestamp}=window._fb;
+  const{db,ref,set}=window._fb;
   try{
-    await setDoc(doc(db,`arr_tresorerie_${S.year}`,`mois_${mi}`),
-      {...S.data[S.year][mi],_by:S.login,_at:serverTimestamp()});
+    await set(ref(db,`tresorerie/${S.year}/mois_${mi}`),
+      {...S.data[S.year][mi],_by:S.login,_at:Date.now()});
     return true;
-  }catch(e){return false;}
+  }catch(e){console.warn("fbSave:",e);return false;}
 }
 
 async function fbLoadYear(year){
   if(!window._fb?.configured||!S.user) return;
-  const{db,collection,getDocs}=window._fb;
+  const{db,ref,get}=window._fb;
   try{
-    const snap=await getDocs(collection(db,`arr_tresorerie_${year}`));
-    snap.forEach(d=>{
-      const idx=parseInt(d.id.replace("mois_",""));
-      if(!isNaN(idx)){const dat={...d.data()};delete dat._by;delete dat._at;S.data[year][idx]=dat;}
-    });
-  }catch(e){}
+    const snap=await get(ref(db,`tresorerie/${year}`));
+    if(snap.exists()){
+      const data=snap.val();
+      Object.keys(data).forEach(key=>{
+        const idx=parseInt(key.replace("mois_",""));
+        if(!isNaN(idx)){
+          const dat={...data[key]};
+          delete dat._by;delete dat._at;
+          S.data[year][idx]=dat;
+        }
+      });
+    }
+  }catch(e){console.warn("fbLoadYear:",e);}
 }
 
 async function fbLoadAllUsers(){
   if(!window._fb?.configured) return [];
-  const{db,collection,getDocs}=window._fb;
+  const{db,ref,get}=window._fb;
   try{
-    const snap=await getDocs(collection(db,"arr_users"));
-    return snap.docs.map(d=>({uid:d.id,...d.data()}));
-  }catch(e){return [];}
+    const snap=await get(ref(db,"arr_users"));
+    if(!snap.exists()) return [];
+    const data=snap.val();
+    return Object.keys(data).map(uid=>({uid,...data[uid]}));
+  }catch(e){console.warn("fbLoadAllUsers:",e);return [];}
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -822,8 +834,11 @@ async function doFirstLoginChange(){
   if(window._fb?.configured&&S.user){
     try{
       await window._fb.updatePassword(S.user,pwd1);
-      const{db,doc,setDoc}=window._fb;
-      await setDoc(doc(db,"arr_users",S.user.uid),{mustChangePwd:false},{merge:true});
+      const{db,ref,get,set}=window._fb;
+      const snap=await get(ref(db,"arr_users/"+S.user.uid));
+      if(snap.exists()){
+        await set(ref(db,"arr_users/"+S.user.uid),{...snap.val(),mustChangePwd:false});
+      }
       ldr(false);document.getElementById("first-login-bg").classList.remove("on");
       toast("✅ Mot de passe défini avec succès !");
     }catch(e){
@@ -932,12 +947,6 @@ function initAuth(){
     ldr(true,"Connexion…");
     try{
       if(window._fb?.configured){
-        /* Table de correspondance username → email Firebase Auth
-           Ajoutez ici chaque nouvel utilisateur créé */
-        const USER_EMAIL_MAP={
-          "admin_arr":     "admin.eglisearr@gmail.com",
-          "tresorier_arr": "doziri1802@gmail.com"
-        };
         const emailToUse=USER_EMAIL_MAP[usr]||null;
         if(!emailToUse){
           ldr(false);
@@ -966,7 +975,7 @@ function initAuth(){
   if(window._fb?.configured&&window._fb.onAuthStateChanged){
     window._fb.onAuthStateChanged(window._fb.auth,async user=>{
       if(user){
-        // Connexion immédiate — pas d'attente Firestore
+        // Connexion immédiate sans attente base de données
         S.user=user;
         S.name=user.displayName||user.email;
         S.login=user.email;
@@ -974,11 +983,11 @@ function initAuth(){
         S.mustChangePwd=false;
         onLoggedIn();
         ldr(false);
-        // Profil Firestore en arrière-plan (sans bloquer)
-        const{db,doc,getDoc}=window._fb;
-        getDoc(doc(db,"arr_users",user.uid)).then(snap=>{
+        // Charger le profil depuis Realtime Database en arrière-plan
+        const{db,ref,get}=window._fb;
+        get(ref(db,"arr_users/"+user.uid)).then(snap=>{
           if(!snap.exists()) return;
-          const dat=snap.data();
+          const dat=snap.val();
           S.role=dat.role||"lecteur";
           S.name=dat.name||user.displayName||user.email;
           S.login=dat.username||user.email;
@@ -1379,13 +1388,15 @@ function openAddUserModal(){
     ldr(true,"Création du compte…");
     if(window._fb?.configured){
       try{
-        const{auth,db,createUserWithEmailAndPassword,doc,setDoc,serverTimestamp}=window._fb;
+        const{auth,db,createUserWithEmailAndPassword,ref,set}=window._fb;
         const cred=await createUserWithEmailAndPassword(auth,email,pwd);
-        await setDoc(doc(db,"arr_users",cred.user.uid),{
+        await set(ref(db,"arr_users/"+cred.user.uid),{
           name,username:uname,email,role,
-          mustChangePwd:true, /* Forces password change on first login */
-          createdAt:serverTimestamp(),createdBy:S.login
+          mustChangePwd:true,
+          createdAt:Date.now(),createdBy:S.login
         });
+        // Ajouter dans USER_EMAIL_MAP local
+        USER_EMAIL_MAP[uname]=email;
         ldr(false);closeModal();
         toast(`✅ Compte créé : @${uname} — l'utilisateur devra changer son mot de passe à la 1ère connexion`);
         await renderUsers();
@@ -1446,8 +1457,12 @@ function editUser(uid){
     ldr(true,"Mise à jour…");
     if(window._fb?.configured){
       try{
-        const{db,doc,setDoc}=window._fb;
-        await setDoc(doc(db,"arr_users",uid),{...u,name,username:uname,role},{merge:true});
+        const{db,ref,set,get}=window._fb;
+        const snap=await get(ref(db,"arr_users/"+uid));
+        const existing=snap.exists()?snap.val():{};
+        await set(ref(db,"arr_users/"+uid),{...existing,name,username:uname,role});
+        // Mettre à jour USER_EMAIL_MAP
+        USER_EMAIL_MAP[uname]=existing.email||u.email;
         toast("✅ Profil mis à jour !");
         if(newpwd) toast("📧 Utilisez 'Mot de passe oublié' pour reset le mdp","in");
         ldr(false);closeModal();await renderUsers();
@@ -1474,8 +1489,8 @@ async function deleteUserConfirm(uid,name){
     ldr(true,"Suppression…");
     if(window._fb?.configured){
       try{
-        const{db,doc,deleteDoc}=window._fb;
-        await deleteDoc(doc(db,"arr_users",uid));
+        const{db,ref,remove}=window._fb;
+        await remove(ref(db,"arr_users/"+uid));
         toast(`Compte supprimé.`);
       }catch(e){ldr(false);closeModal();toast("Erreur : "+e.message,"er");return;}
     }else{
