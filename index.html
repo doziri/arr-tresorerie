@@ -960,7 +960,7 @@ function initAuth(){
         try{
           const snap=await Promise.race([
             getDoc(doc(db,"arr_users",user.uid)),
-            new Promise((_,r)=>setTimeout(()=>r(new Error("timeout")),6000))
+            new Promise((_,r)=>setTimeout(()=>r(new Error("timeout")),15000))
           ]);
           if(snap.exists()){
             const dat=snap.data();
@@ -971,7 +971,7 @@ function initAuth(){
         }catch(e){S.role="lecteur";S.name=user.email;S.login=user.email;S.mustChangePwd=false;}
         await Promise.race([
           fbLoadYear(S.year),
-          new Promise(r=>setTimeout(r,6000))
+          new Promise(r=>setTimeout(r,15000))
         ]);
         onLoggedIn();ldr(false);
         if(S.mustChangePwd) setTimeout(showFirstLogin,400);
