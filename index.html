@@ -955,26 +955,32 @@ function initAuth(){
   if(window._fb?.configured&&window._fb.onAuthStateChanged){
     window._fb.onAuthStateChanged(window._fb.auth,async user=>{
       if(user){
-        ldr(true,"Chargement du profil…");S.user=user;
+        // Connexion immédiate avec infos de base
+        S.user=user; S.name=user.displayName||user.email;
+        S.login=user.email; S.role="lecteur"; S.mustChangePwd=false;
+        onLoggedIn(); ldr(false);
+        // Charger le profil complet en arrière-plan
         const{db,doc,getDoc}=window._fb;
         try{
-          const snap=await Promise.race([
-            getDoc(doc(db,"arr_users",user.uid)),
-            new Promise((_,r)=>setTimeout(()=>r(new Error("timeout")),15000))
-          ]);
+          const snap=await getDoc(doc(db,"arr_users",user.uid));
           if(snap.exists()){
             const dat=snap.data();
-            S.role=dat.role||"lecteur";S.name=dat.name||user.displayName||"?";
+            S.role=dat.role||"lecteur";
+            S.name=dat.name||user.displayName||user.email;
             S.login=dat.username||user.email;
             S.mustChangePwd=dat.mustChangePwd===true;
-          }else{S.role="lecteur";S.name=user.email;S.login=user.email;S.mustChangePwd=false;}
-        }catch(e){S.role="lecteur";S.name=user.email;S.login=user.email;S.mustChangePwd=false;}
-        await Promise.race([
-          fbLoadYear(S.year),
-          new Promise(r=>setTimeout(r,15000))
-        ]);
-        onLoggedIn();ldr(false);
-        if(S.mustChangePwd) setTimeout(showFirstLogin,400);
+            const ini=S.name.split(" ").map(w=>w[0]).join("").toUpperCase().slice(0,2);
+            const av=document.getElementById("u-av");
+            if(av){av.textContent=ini;av.className="av "+S.role;}
+            const nm=document.getElementById("u-nm");
+            if(nm)nm.textContent=S.name;
+            const rb=document.getElementById("rb-role");
+            if(rb){rb.textContent=ROLES[S.role]?.label;rb.className="rb "+S.role;}
+            document.getElementById("nav-users").style.display=canMgr()?"flex":"none";
+            if(S.mustChangePwd)setTimeout(showFirstLogin,800);
+          }
+        }catch(e){console.warn("Profil:",e);}
+        try{await fbLoadYear(S.year);navigate(S.pg);}catch(e){}
       }else showLogin();
     });
   }
