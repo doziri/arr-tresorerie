@@ -929,29 +929,28 @@ function initAuth(){
     ldr(true,"Connexion…");
     try{
       if(window._fb?.configured){
-        // Essayer d'abord avec l'email dérivé du username (format: username@arr.app)
-        // Si ça échoue, chercher dans Firestore
-        const{db,collection,getDocs,auth,signInWithEmailAndPassword}=window._fb;
-        let emailToUse=null;
-        // Timeout court sur la recherche Firestore (3s max)
-        try{
-          const snapPromise=getDocs(collection(db,"arr_users"));
-          const timeoutPromise=new Promise((_,r)=>setTimeout(()=>r(new Error("timeout")),3000));
-          const snap=await Promise.race([snapPromise,timeoutPromise]);
-          snap.forEach(d=>{const dat=d.data();if((dat.username||"").toLowerCase()===usr)emailToUse=dat.email;});
-        }catch(e){
-          // Firestore trop lent — construire email à partir du username
-          // Format attendu: si username=admin_arr → chercher dans les comptes connus
-          const knownUsers={"admin_arr":"admin.eglisearr@gmail.com","tresorier_arr":"doziri1802@gmail.com"};
-          emailToUse=knownUsers[usr]||null;
+        /* Table de correspondance username → email Firebase Auth
+           Ajoutez ici chaque nouvel utilisateur créé */
+        const USER_EMAIL_MAP={
+          "admin_arr":     "admin.eglisearr@gmail.com",
+          "tresorier_arr": "doziri1802@gmail.com"
+        };
+        const emailToUse=USER_EMAIL_MAP[usr]||null;
+        if(!emailToUse){
+          ldr(false);
+          err.textContent="Nom d'utilisateur introuvable.";
+          err.classList.add("on");
+          return;
         }
-        if(!emailToUse){ldr(false);err.textContent="Nom d'utilisateur introuvable.";err.classList.add("on");return;}
-        await signInWithEmailAndPassword(auth,emailToUse,pw);
+        await window._fb.signInWithEmailAndPassword(window._fb.auth,emailToUse,pw);
+        /* onAuthStateChanged prend le relais */
       } else {
         await demoLogin(usr,pw);
       }
     }catch(e){
-      ldr(false);err.textContent="Nom d'utilisateur ou mot de passe incorrect.";err.classList.add("on");
+      ldr(false);
+      err.textContent="Nom d'utilisateur ou mot de passe incorrect.";
+      err.classList.add("on");
     }
   };
   document.getElementById("btn-lg").addEventListener("click",doLogin);
