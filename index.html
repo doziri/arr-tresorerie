@@ -25,13 +25,13 @@
      ║  Console → Paramètres du projet → Vos applications      ║
      ╚══════════════════════════════════════════════════════════╝ */
   const firebaseConfig = {
-  apiKey:            "AIzaSyBwcBYwz9qfHxnCDsiJx4k5UfUM-WSKNL8",
-  authDomain:        "assemblee-royale.firebaseapp.com",
-  projectId:         "assemblee-royale",
-  storageBucket:     "assemblee-royale.firebasestorage.app",
-  messagingSenderId: "1006599645097",
-  appId:             "1:1006599645097:web:911e92e5eeb049b42146b8"
-};
+    apiKey:            "VOTRE_API_KEY",
+    authDomain:        "VOTRE_PROJECT_ID.firebaseapp.com",
+    projectId:         "VOTRE_PROJECT_ID",
+    storageBucket:     "VOTRE_PROJECT_ID.appspot.com",
+    messagingSenderId: "VOTRE_SENDER_ID",
+    appId:             "VOTRE_APP_ID"
+  };
 
   const configured = firebaseConfig.apiKey !== "VOTRE_API_KEY";
   try {
@@ -958,7 +958,10 @@ function initAuth(){
         ldr(true,"Chargement du profil…");S.user=user;
         const{db,doc,getDoc}=window._fb;
         try{
-          const snap=await getDoc(doc(db,"arr_users",user.uid));
+          const snap=await Promise.race([
+            getDoc(doc(db,"arr_users",user.uid)),
+            new Promise((_,r)=>setTimeout(()=>r(new Error("timeout")),6000))
+          ]);
           if(snap.exists()){
             const dat=snap.data();
             S.role=dat.role||"lecteur";S.name=dat.name||user.displayName||"?";
@@ -966,9 +969,11 @@ function initAuth(){
             S.mustChangePwd=dat.mustChangePwd===true;
           }else{S.role="lecteur";S.name=user.email;S.login=user.email;S.mustChangePwd=false;}
         }catch(e){S.role="lecteur";S.name=user.email;S.login=user.email;S.mustChangePwd=false;}
-        await fbLoadYear(S.year);
+        await Promise.race([
+          fbLoadYear(S.year),
+          new Promise(r=>setTimeout(r,6000))
+        ]);
         onLoggedIn();ldr(false);
-        // Show first-login password change overlay if needed
         if(S.mustChangePwd) setTimeout(showFirstLogin,400);
       }else showLogin();
     });
