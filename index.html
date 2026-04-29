@@ -974,6 +974,7 @@ function initAuth(){
   }));
   if(window._fb?.configured&&window._fb.onAuthStateChanged){
     window._fb.onAuthStateChanged(window._fb.auth,async user=>{
+      ldr(false); // Toujours cacher le loader d'abord
       if(user){
         // Connexion immédiate sans attente base de données
         S.user=user;
@@ -982,7 +983,6 @@ function initAuth(){
         S.role="lecteur";
         S.mustChangePwd=false;
         onLoggedIn();
-        ldr(false);
         // Charger le profil depuis Realtime Database en arrière-plan
         const{db,ref,get}=window._fb;
         get(ref(db,"arr_users/"+user.uid)).then(snap=>{
@@ -1601,6 +1601,7 @@ function exportPDF(mi){
 
 /* ══ INIT ═══════════════════════════════════════════════════ */
 document.getElementById("m-sel").value=S.mi;
+ldr(false); // S'assurer que le loader est caché au démarrage
 initAuth();
 </script>
 </body>
