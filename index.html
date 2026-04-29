@@ -1601,7 +1601,15 @@ function exportPDF(mi){
 
 /* ══ INIT ═══════════════════════════════════════════════════ */
 document.getElementById("m-sel").value=S.mi;
-ldr(false); // S'assurer que le loader est caché au démarrage
+// Cacher le loader immédiatement au démarrage
+ldr(false);
+// Si Firebase ne répond pas dans 3 secondes → afficher le login
+setTimeout(()=>{
+  if(document.getElementById("ldr").classList.contains("on")){
+    ldr(false);
+    showLogin();
+  }
+},3000);
 initAuth();
 </script>
 </body>
