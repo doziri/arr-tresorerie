@@ -1256,16 +1256,32 @@ function renderMonth(){
     </div>`;
 
   if(edit){
+    // Timer de sauvegarde automatique (2 secondes après la dernière modification)
+    let autoSaveTimer=null;
+    function scheduleAutoSave(){
+      clearTimeout(autoSaveTimer);
+      const btn=document.getElementById("btn-sv");
+      if(btn){btn.textContent="💾 Modification…";btn.style.opacity=".6";}
+      autoSaveTimer=setTimeout(async()=>{
+        const ok=await fbSave(mi);
+        const btn=document.getElementById("btn-sv");
+        if(btn){btn.textContent="💾 Sauvegarder";btn.style.opacity="1";}
+        if(ok) toast("✅ Sauvegarde automatique","ok");
+      },2000);
+    }
+
     document.querySelectorAll(".inp,.inp-lb").forEach(inp=>{
       inp.addEventListener("change",()=>{
         const{s,i,f}=inp.dataset;
         S.data[S.year][mi][s][parseInt(i)][f]=f==="label"?inp.value:(parseFloat(inp.value)||0);
+        scheduleAutoSave();
         setTimeout(renderMonth,25);
       });
     });
     document.getElementById("btn-sv")?.addEventListener("click",async()=>{
+      clearTimeout(autoSaveTimer);
       ldr(true,"Sauvegarde…");const ok=await fbSave(mi);ldr(false);
-      toast(ok?"Sauvegardé dans Firebase !":"Sauvegarde locale (Firebase non configuré)",ok?"ok":"in");
+      toast(ok?"✅ Sauvegardé dans Firebase !":"Sauvegarde locale (Firebase non configuré)",ok?"ok":"in");
     });
   }
   document.getElementById("btn-pdf")?.addEventListener("click",()=>exportPDF(mi));
