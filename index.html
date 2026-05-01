@@ -683,7 +683,7 @@ function defMonth(){
 }
 
 /* ══ UTILS ══════════════════════════════════════════════════ */
-const fmt=n=>isNaN(n)||n===null?"—":new Intl.NumberFormat("fr-FR",{maximumFractionDigits:0}).format(n)+" FCFA";
+const fmt=n=>isNaN(n)||n===null?"—":new Intl.NumberFormat("fr-FR",{maximumFractionDigits:0}).format(n).replace(/ /g," ").replace(/ /g," ")+" FCFA";
 const fmtP=n=>(!n||isNaN(n))?"—":(n*100).toFixed(1)+" %";
 const sum=a=>a.reduce((s,v)=>s+(v||0),0);
 const ps=(arr,f)=>sum(arr.map(x=>x[f]||0));
@@ -962,18 +962,27 @@ function initAuth(){
         S.name=usr;
         S.role="lecteur";
         S.mustChangePwd=false;
-        // Charger profil Realtime Database
+        // Charger profil Realtime Database (avec timeout 8s)
         const{db,ref,get}=window._fb;
         try{
-          const snap=await get(ref(db,"arr_users/"+cred.user.uid));
+          const snap=await Promise.race([
+            get(ref(db,"arr_users/"+cred.user.uid)),
+            new Promise((_,r)=>setTimeout(()=>r(new Error("timeout")),8000))
+          ]);
           if(snap.exists()){
             const dat=snap.val();
             S.role=dat.role||"lecteur";
             S.name=dat.name||usr;
             S.login=dat.username||usr;
             S.mustChangePwd=dat.mustChangePwd===true;
+            console.log("Profil chargé:",S.role,S.name);
           }
-        }catch(e2){console.warn("Profil:",e2);}
+        }catch(e2){
+          console.warn("Profil non chargé:",e2.message);
+          // Fallback — déduire le rôle depuis USER_EMAIL_MAP
+          if(usr==="admin_arr") S.role="admin";
+          else if(usr==="tresorier_arr") S.role="tresorier";
+        }
         ldr(false);
         onLoggedIn();
         if(S.mustChangePwd)setTimeout(showFirstLogin,400);
