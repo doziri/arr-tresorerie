@@ -954,8 +954,29 @@ function initAuth(){
           err.classList.add("on");
           return;
         }
-        await window._fb.signInWithEmailAndPassword(window._fb.auth,emailToUse,pw);
-        /* onAuthStateChanged prend le relais */
+        // Connexion Firebase Auth
+        const cred=await window._fb.signInWithEmailAndPassword(window._fb.auth,emailToUse,pw);
+        // Connexion réussie — charger le profil et ouvrir l'app immédiatement
+        S.user=cred.user;
+        S.login=usr;
+        S.name=usr;
+        S.role="lecteur";
+        S.mustChangePwd=false;
+        // Charger profil Realtime Database
+        const{db,ref,get}=window._fb;
+        try{
+          const snap=await get(ref(db,"arr_users/"+cred.user.uid));
+          if(snap.exists()){
+            const dat=snap.val();
+            S.role=dat.role||"lecteur";
+            S.name=dat.name||usr;
+            S.login=dat.username||usr;
+            S.mustChangePwd=dat.mustChangePwd===true;
+          }
+        }catch(e2){console.warn("Profil:",e2);}
+        ldr(false);
+        onLoggedIn();
+        if(S.mustChangePwd)setTimeout(showFirstLogin,400);
       } else {
         await demoLogin(usr,pw);
       }
@@ -972,7 +993,7 @@ function initAuth(){
     document.getElementById("l-pw").value=b.dataset.p;
     doLogin();
   }));
-  if(window._fb?.configured&&window._fb.onAuthStateChanged){
+  if(false&&window._fb?.configured&&window._fb.onAuthStateChanged){ // Désactivé — login géré par doLogin
     window._fb.onAuthStateChanged(window._fb.auth,async user=>{
       ldr(false); // Toujours cacher le loader d'abord
       if(user){
