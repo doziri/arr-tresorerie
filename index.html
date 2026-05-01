@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
 
 <!-- ══ FIREBASE (Realtime Database) ════════════════════════ -->
 <script type="module">
@@ -962,7 +963,17 @@ function initAuth(){
         S.name=usr;
         S.role="lecteur";
         S.mustChangePwd=false;
-        // Charger profil Realtime Database (avec timeout 8s)
+        // Déduire le rôle immédiatement depuis le username (sans attendre la DB)
+        const ROLE_MAP={
+          "admin_arr":"admin",
+          "tresorier_arr":"tresorier"
+        };
+        S.role=ROLE_MAP[usr]||"lecteur";
+        S.login=usr;
+        S.name=usr;
+        S.mustChangePwd=false;
+
+        // Charger le profil complet depuis Realtime Database
         const{db,ref,get}=window._fb;
         try{
           const snap=await Promise.race([
@@ -971,17 +982,13 @@ function initAuth(){
           ]);
           if(snap.exists()){
             const dat=snap.val();
-            S.role=dat.role||"lecteur";
+            S.role=dat.role||S.role;
             S.name=dat.name||usr;
             S.login=dat.username||usr;
             S.mustChangePwd=dat.mustChangePwd===true;
-            console.log("Profil chargé:",S.role,S.name);
           }
         }catch(e2){
-          console.warn("Profil non chargé:",e2.message);
-          // Fallback — déduire le rôle depuis USER_EMAIL_MAP
-          if(usr==="admin_arr") S.role="admin";
-          else if(usr==="tresorier_arr") S.role="tresorier";
+          console.warn("Profil DB non chargé — rôle déduit depuis username");
         }
         ldr(false);
         onLoggedIn();
@@ -1194,6 +1201,7 @@ function renderMonth(){
     <div class="abar">
       ${edit?`<button class="btn btn-gn" id="btn-sv">💾 Sauvegarder</button>`:""}
       <button class="btn btn-nv btn-sm" id="btn-pdf">📄 PDF</button>
+      <button class="btn btn-gd btn-sm" id="btn-xl">📊 Excel</button>
       <div class="sp"></div>
       ${!edit?`<div class="ro-tag">🔒 Lecture seule — ${ROLES[S.role]?.label}</div>`:""}
     </div>
@@ -1254,6 +1262,7 @@ function renderMonth(){
     });
   }
   document.getElementById("btn-pdf")?.addEventListener("click",()=>exportPDF(mi));
+  document.getElementById("btn-xl")?.addEventListener("click",()=>exportExcel(mi));
 }
 
 /* ══ RÉCAP ANNUEL ═══════════════════════════════════════════ */
@@ -1571,6 +1580,147 @@ function renderGuide(){
       <p><span class="bdg wn">⚠️ Attention</span> Entre 80 % et 100 % de la prévision</p>
       <p><span class="bdg dg">🔴 Alerte</span> Moins de 80 % de la prévision</p>`],
     ].map(([i,t,b])=>`<div class="gsec"><h3>${i} ${t}</h3>${b}</div>`).join("")}`;
+}
+
+/* ══ EXPORT EXCEL ════════════════════════════════════════════ */
+function exportExcel(mi){
+  const XLSX=window.XLSX;
+  if(!XLSX){toast("Bibliothèque Excel non chargée","er");return;}
+  const c=calc(mi),m=MOIS[mi],d=S.data[S.year][mi];
+  const wb=XLSX.utils.book_new();
+
+  // ── Styles helpers ──
+  const hdr=(v)=>({v,t:"s",s:{font:{bold:true,color:{rgb:"FFFFFF"}},fill:{fgColor:{rgb:"1A2E5A"}},alignment:{horizontal:"center"}}});
+  const sec=(v,color="1A2E5A")=>({v,t:"s",s:{font:{bold:true,color:{rgb:"FFFFFF"}},fill:{fgColor:{rgb:color}}}});
+  const num=(v)=>({v:v||0,t:"n",s:{numFmt:'#,##0" FCFA"'}});
+  const pct=(v)=>({v:v||0,t:"n",s:{numFmt:'0.0"%"'}});
+  const lbl=(v,color=null)=>({v,t:"s",s:color?{font:{color:{rgb:color}}}:{}});
+
+  // ── Feuille mensuelle ──
+  const rows=[];
+
+  // Titre
+  rows.push([{v:`ASSEMBLÉE ROYALE DES RACHETÉS — TRÉSORERIE ${m.toUpperCase()} ${S.year}`,t:"s",
+    s:{font:{bold:true,sz:14,color:{rgb:"1A2E5A"}}}}]);
+  rows.push([{v:`Généré le ${new Date().toLocaleDateString("fr-FR")} · @${S.login}`,t:"s",
+    s:{font:{italic:true,color:{rgb:"888888"}}}}]);
+  rows.push([]);
+
+  // KPIs
+  rows.push([hdr("INDICATEUR"),hdr("PRÉVISION"),hdr("RÉEL"),hdr("ÉCART"),hdr("% RÉALISATION")]);
+  rows.push([lbl("💰 Total Ressources","2D5016"),num(c.rP),num(c.rR),num(c.rR-c.rP),pct(c.rP?c.rR/c.rP*100:0)]);
+  rows.push([lbl("💸 Total Charges","C62828"),num(c.cP),num(c.cR),num(c.cR-c.cP),pct(c.cP?c.cR/c.cP*100:0)]);
+  rows.push([lbl("⚖️ Solde net",c.sR>=0?"2D5016":"C62828"),num(c.sP),num(c.sR),"",""]);
+  rows.push([]);
+
+  // Section helper
+  function addSection(title,arr,color){
+    rows.push([sec(title,color),"","","",""]);
+    rows.push([hdr("Rubrique"),hdr("Prévision (FCFA)"),hdr("Réel (FCFA)"),hdr("Écart (FCFA)"),hdr("% Réal.")]);
+    arr.forEach(r=>{
+      const e=r.reel-r.prev;
+      const p=r.prev?r.reel/r.prev*100:0;
+      rows.push([
+        lbl(r.label),
+        num(r.prev),
+        num(r.reel),
+        {v:e,t:"n",s:{numFmt:'#,##0" FCFA"',font:{color:{rgb:e>=0?"2D5016":"C62828"}}}},
+        pct(p)
+      ]);
+    });
+    // Sous-total
+    const pT=d[Object.keys(d).find(k=>d[k]===arr)]||arr;
+    const sP=arr.reduce((s,r)=>s+(r.prev||0),0);
+    const sR=arr.reduce((s,r)=>s+(r.reel||0),0);
+    rows.push([
+      {v:"Sous-total",t:"s",s:{font:{bold:true},fill:{fgColor:{rgb:"EEF1FF"}}}},
+      {v:sP,t:"n",s:{font:{bold:true},numFmt:'#,##0" FCFA"',fill:{fgColor:{rgb:"EEF1FF"}}}},
+      {v:sR,t:"n",s:{font:{bold:true},numFmt:'#,##0" FCFA"',fill:{fgColor:{rgb:"EEF1FF"}}}},
+      {v:sR-sP,t:"n",s:{font:{bold:true,color:{rgb:sR>=sP?"2D5016":"C62828"}},numFmt:'#,##0" FCFA"',fill:{fgColor:{rgb:"EEF1FF"}}}},
+      ""
+    ]);
+    rows.push([]);
+  }
+
+  // CHARGES
+  rows.push([{v:"═══ CHARGES & DÉPENSES ═══",t:"s",s:{font:{bold:true,sz:12,color:{rgb:"8B0000"}}}}]);
+  rows.push([]);
+  addSection("💼 Salaires des Pasteurs",d.salaires,"8B0000");
+  addSection("🏠 Loyers & Locations",d.loyers,"8B3A00");
+  addSection("⚡ Factures & Charges fixes",d.factures,"5B4400");
+  addSection("🟣 Dépenses Diverses",d.divers,"5B2D8E");
+
+  // Total charges
+  rows.push([
+    {v:"🔴 TOTAL GÉNÉRAL CHARGES",t:"s",s:{font:{bold:true,color:{rgb:"FFFFFF"}},fill:{fgColor:{rgb:"8B0000"}}}},
+    {v:c.cP,t:"n",s:{font:{bold:true,color:{rgb:"FFFFFF"}},numFmt:'#,##0" FCFA"',fill:{fgColor:{rgb:"8B0000"}}}},
+    {v:c.cR,t:"n",s:{font:{bold:true,color:{rgb:"FFFFFF"}},numFmt:'#,##0" FCFA"',fill:{fgColor:{rgb:"8B0000"}}}},
+    {v:c.cR-c.cP,t:"n",s:{font:{bold:true,color:{rgb:"FFFFFF"}},numFmt:'#,##0" FCFA"',fill:{fgColor:{rgb:"8B0000"}}}},
+    {v:c.cP?c.cR/c.cP*100:0,t:"n",s:{font:{bold:true,color:{rgb:"FFFFFF"}},numFmt:'0.0"%"',fill:{fgColor:{rgb:"8B0000"}}}}
+  ]);
+  rows.push([]);rows.push([]);
+
+  // RESSOURCES
+  rows.push([{v:"═══ RESSOURCES & RECETTES ═══",t:"s",s:{font:{bold:true,sz:12,color:{rgb:"2D5016"}}}}]);
+  rows.push([]);
+  addSection("⛪ Cultes du Dimanche",d.dimanche,"2D5016");
+  addSection("📅 Cultes en Semaine",d.semaine,"1A5C38");
+  addSection("💳 Offrandes Spéciales",d.speciales,"0277BD");
+
+  // Total ressources
+  rows.push([
+    {v:"🟢 TOTAL GÉNÉRAL RESSOURCES",t:"s",s:{font:{bold:true,color:{rgb:"FFFFFF"}},fill:{fgColor:{rgb:"2D5016"}}}},
+    {v:c.rP,t:"n",s:{font:{bold:true,color:{rgb:"FFFFFF"}},numFmt:'#,##0" FCFA"',fill:{fgColor:{rgb:"2D5016"}}}},
+    {v:c.rR,t:"n",s:{font:{bold:true,color:{rgb:"FFFFFF"}},numFmt:'#,##0" FCFA"',fill:{fgColor:{rgb:"2D5016"}}}},
+    {v:c.rR-c.rP,t:"n",s:{font:{bold:true,color:{rgb:"FFFFFF"}},numFmt:'#,##0" FCFA"',fill:{fgColor:{rgb:"2D5016"}}}},
+    {v:c.rP?c.rR/c.rP*100:0,t:"n",s:{font:{bold:true,color:{rgb:"FFFFFF"}},numFmt:'0.0"%"',fill:{fgColor:{rgb:"2D5016"}}}}
+  ]);
+
+  const ws=XLSX.utils.aoa_to_sheet(rows);
+
+  // Largeurs colonnes
+  ws["!cols"]=[{wch:40},{wch:18},{wch:18},{wch:18},{wch:14}];
+
+  // Fusion titre
+  ws["!merges"]=[
+    {s:{r:0,c:0},e:{r:0,c:4}},
+    {s:{r:1,c:0},e:{r:1,c:4}},
+  ];
+
+  XLSX.utils.book_append_sheet(wb,ws,`${m.slice(0,3)} ${S.year}`);
+
+  // ── Feuille récap annuel ──
+  const cs=MOIS.map((_,i)=>calc(i));
+  const recapRows=[];
+  recapRows.push([{v:`RÉCAPITULATIF ANNUEL ${S.year}`,t:"s",s:{font:{bold:true,sz:14,color:{rgb:"1A2E5A"}}}}]);
+  recapRows.push([]);
+  const rHdr=[hdr("Indicateur"),...MOIS.map(m=>hdr(m.slice(0,3))),hdr("TOTAL")];
+  recapRows.push(rHdr);
+  recapRows.push([
+    lbl("🟢 Ressources réelles","2D5016"),
+    ...cs.map(c=>num(c.rR)),
+    {v:cs.reduce((s,c)=>s+c.rR,0),t:"n",s:{font:{bold:true},numFmt:'#,##0" FCFA"'}}
+  ]);
+  recapRows.push([
+    lbl("🔴 Charges réelles","8B0000"),
+    ...cs.map(c=>num(c.cR)),
+    {v:cs.reduce((s,c)=>s+c.cR,0),t:"n",s:{font:{bold:true},numFmt:'#,##0" FCFA"'}}
+  ]);
+  const totS=cs.reduce((s,c)=>s+c.sR,0);
+  recapRows.push([
+    {v:"💛 Solde net",t:"s",s:{font:{bold:true}}},
+    ...cs.map(c=>({v:c.sR,t:"n",s:{font:{bold:true,color:{rgb:c.sR>=0?"2D5016":"C62828"}},numFmt:'#,##0" FCFA"'}})),
+    {v:totS,t:"n",s:{font:{bold:true,color:{rgb:totS>=0?"2D5016":"C62828"}},numFmt:'#,##0" FCFA"'}}
+  ]);
+
+  const wsR=XLSX.utils.aoa_to_sheet(recapRows);
+  wsR["!cols"]=[{wch:22},...Array(13).fill({wch:14})];
+  wsR["!merges"]=[{s:{r:0,c:0},e:{r:0,c:13}}];
+  XLSX.utils.book_append_sheet(wb,wsR,`Récap ${S.year}`);
+
+  // Télécharger
+  XLSX.writeFile(wb,`Tresorerie_ARR_${m.normalize("NFD").replace(/[\u0300-\u036f]/g,"")}_${S.year}.xlsx`);
+  toast(`Excel ${m} ${S.year} exporté !`);
 }
 
 /* ══ EXPORT PDF ═════════════════════════════════════════════ */
