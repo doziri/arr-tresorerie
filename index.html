@@ -1010,15 +1010,17 @@ function initAuth(){
     document.getElementById("l-pw").value=b.dataset.p;
     doLogin();
   }));
-  if(false&&window._fb?.configured&&window._fb.onAuthStateChanged){ // Désactivé — login géré par doLogin
+  if(window._fb?.configured&&window._fb.onAuthStateChanged){
     window._fb.onAuthStateChanged(window._fb.auth,async user=>{
-      ldr(false); // Toujours cacher le loader d'abord
+      ldr(false);
       if(user){
-        // Connexion immédiate sans attente base de données
         S.user=user;
-        S.name=user.displayName||user.email;
-        S.login=user.email;
-        S.role="lecteur";
+        // Chercher le username depuis USER_EMAIL_MAP
+        const uname=Object.keys(USER_EMAIL_MAP).find(k=>USER_EMAIL_MAP[k]===user.email)||user.email;
+        S.login=uname;
+        // Déduire le rôle immédiatement depuis le username
+        S.role=uname==="admin_arr"?"admin":uname==="tresorier_arr"?"tresorier":"lecteur";
+        S.name=uname==="admin_arr"?"Administrateur ARR":uname==="tresorier_arr"?"Trésorier ARR":user.displayName||user.email;
         S.mustChangePwd=false;
         onLoggedIn();
         // Charger le profil depuis Realtime Database en arrière-plan
