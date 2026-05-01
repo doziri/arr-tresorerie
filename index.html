@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>ARR — Trésorerie</title>
+<title>ARR â€” TrÃ©sorerie</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
 
-<!-- ══ FIREBASE (Realtime Database) ════════════════════════ -->
+<!-- â•â• FIREBASE (Realtime Database) â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <script type="module">
   import { initializeApp }
     from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
@@ -49,7 +49,7 @@
 </script>
 
 <style>
-/* ══ TOKENS ══════════════════════════════════════════════════ */
+/* â•â• TOKENS â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 :root {
   --nv:#1A2E5A; --nv-dk:#111E3C; --nv-lt:#243570;
   --gd:#C9A227; --gd-lt:#F0D878; --gd-dk:#8B6E0F;
@@ -72,7 +72,7 @@
 html{font-size:15px}
 body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--tx);min-height:100vh;overflow-x:hidden}
 
-/* ══ LOGIN ═══════════════════════════════════════════════════ */
+/* â•â• LOGIN â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 #pg-login{min-height:100vh;display:flex;
   background:linear-gradient(140deg,var(--nv-dk) 0%,var(--nv) 50%,#1E1060 100%);
   position:relative;overflow:hidden}
@@ -130,7 +130,7 @@ body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--tx);min-heig
   cursor:pointer;transition:.15s;font-family:'Lato',sans-serif}
 .demo-b:hover{background:rgba(201,162,39,.2);color:var(--gd-lt);border-color:var(--gd)}
 
-/* ══ APP ═════════════════════════════════════════════════════ */
+/* â•â• APP â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 #app{display:none}
 #app.on{display:flex;min-height:100vh}
 
@@ -324,7 +324,7 @@ body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--tx);min-heig
 .ibox.rd{background:#ffebee;border:1px solid rgba(198,40,40,.2);color:#7f0000}
 .ibox .ic{font-size:1.02rem;flex-shrink:0;margin-top:.03rem}
 
-/* ══ USERS PAGE ══════════════════════════════════════════════ */
+/* â•â• USERS PAGE â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .ugrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:.9rem;margin-bottom:1.3rem}
 .uc{background:var(--sf);border-radius:var(--r);padding:1rem 1.1rem;
   box-shadow:var(--sh);display:flex;align-items:center;gap:.8rem;
@@ -397,7 +397,7 @@ body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--tx);min-heig
 .chpwd-link{font-size:.78rem;color:var(--sk);cursor:pointer;text-decoration:underline;margin-top:.4rem;display:inline-block}
 .chpwd-link:hover{color:var(--nv)}
 
-/* ══ PASSWORD STRENGTH ═══════════════════════════════════════ */
+/* â•â• PASSWORD STRENGTH â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .pwd-wrap{position:relative}
 .pwd-eye{position:absolute;right:.75rem;top:50%;transform:translateY(-50%);
   cursor:pointer;color:var(--tx-m);font-size:1rem;user-select:none;
@@ -453,73 +453,73 @@ body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--tx);min-heig
 </head>
 <body>
 
-<!-- ══ LOGIN ═════════════════════════════════════════════════ -->
+<!-- â•â• LOGIN â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <div id="pg-login">
   <div class="lg-left">
     <img class="lg-logo" src="logo_eglise.png" alt="ARR" onerror="this.style.opacity='.2'"/>
-    <div class="lg-ch">ASSEMBLÉE ROYALE<br/>DES RACHETÉS</div>
-    <div class="lg-tag">Gestion de Trésorerie</div>
+    <div class="lg-ch">ASSEMBLÃ‰E ROYALE<br/>DES RACHETÃ‰S</div>
+    <div class="lg-tag">Gestion de TrÃ©sorerie</div>
   </div>
   <div class="lg-div"></div>
   <div class="lg-right">
     <div class="lg-card">
       <div class="lg-ti">Connexion</div>
-      <div class="lg-de">Accès réservé aux membres autorisés</div>
+      <div class="lg-de">AccÃ¨s rÃ©servÃ© aux membres autorisÃ©s</div>
       <div class="fg">
         <label>Nom d'utilisateur</label>
         <input type="text" id="l-usr" placeholder="ex: tresorier_arr" autocomplete="username"/>
       </div>
       <div class="fg">
         <label>Mot de passe</label>
-        <input type="password" id="l-pw" placeholder="••••••••" autocomplete="current-password"/>
+        <input type="password" id="l-pw" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢" autocomplete="current-password"/>
       </div>
-      <button class="btn-lg" id="btn-lg">Accéder →</button>
+      <button class="btn-lg" id="btn-lg">AccÃ©der â†’</button>
       <div class="fg-err" id="l-err"></div>
       <div class="demo-bx">
-        <p>🧪 Comptes de démonstration</p>
+        <p>ðŸ§ª Comptes de dÃ©monstration</p>
         <div class="demo-bs">
-          <button class="demo-b" data-u="admin_arr"     data-p="admin2026">🔑 Admin</button>
-          <button class="demo-b" data-u="tresorier_arr" data-p="tresorier2026">💰 Trésorier</button>
-          <button class="demo-b" data-u="pasteur_arr"   data-p="pasteur2026">✝️ Pasteur</button>
-          <button class="demo-b" data-u="lecteur_arr"   data-p="lecteur2026">👁️ Lecteur</button>
+          <button class="demo-b" data-u="admin_arr"     data-p="admin2026">ðŸ”‘ Admin</button>
+          <button class="demo-b" data-u="tresorier_arr" data-p="tresorier2026">ðŸ’° TrÃ©sorier</button>
+          <button class="demo-b" data-u="pasteur_arr"   data-p="pasteur2026">âœï¸ Pasteur</button>
+          <button class="demo-b" data-u="lecteur_arr"   data-p="lecteur2026">ðŸ‘ï¸ Lecteur</button>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ══ APP ════════════════════════════════════════════════════ -->
+<!-- â•â• APP â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <div id="app">
   <aside class="sb" id="sb">
     <div class="sb-brand">
       <img src="logo_eglise.png" alt="ARR" onerror="this.style.display='none'"/>
-      <div><div class="sb-ch">Assemblée Royale<br/>des Rachetés</div><div class="sb-sub">Trésorerie</div></div>
+      <div><div class="sb-ch">AssemblÃ©e Royale<br/>des RachetÃ©s</div><div class="sb-sub">TrÃ©sorerie</div></div>
     </div>
 
     <!-- Exercise selector -->
     <div class="ex-sel-wrap">
       <select class="ex-sel" id="ex-sel" title="Changer d'exercice"></select>
-      <span class="ex-sel-ico">▼</span>
+      <span class="ex-sel-ico">â–¼</span>
     </div>
 
-    <div class="rb" id="rb-role">—</div>
+    <div class="rb" id="rb-role">â€”</div>
     <nav class="sb-nav">
       <div class="ngl">Vue d'ensemble</div>
-      <div class="ni active" data-pg="dash"><span class="ni-ic">📊</span>Tableau de bord</div>
-      <div class="ni" data-pg="recap"><span class="ni-ic">📅</span>Récap annuel</div>
+      <div class="ni active" data-pg="dash"><span class="ni-ic">ðŸ“Š</span>Tableau de bord</div>
+      <div class="ni" data-pg="recap"><span class="ni-ic">ðŸ“…</span>RÃ©cap annuel</div>
       <div class="ngl">Saisie mensuelle</div>
-      <div class="mtog" id="mtog"><span class="ni-ic">📆</span>Mois<span class="tarr" id="tarr">▼</span></div>
+      <div class="mtog" id="mtog"><span class="ni-ic">ðŸ“†</span>Mois<span class="tarr" id="tarr">â–¼</span></div>
       <div class="mpan" id="mpan"><div id="mlist"></div></div>
       <div class="ngl">Administration</div>
-      <div class="ni" id="nav-users" data-pg="users" style="display:none"><span class="ni-ic">👥</span>Utilisateurs</div>
-      <div class="ni" data-pg="guide"><span class="ni-ic">📋</span>Guide & aide</div>
+      <div class="ni" id="nav-users" data-pg="users" style="display:none"><span class="ni-ic">ðŸ‘¥</span>Utilisateurs</div>
+      <div class="ni" data-pg="guide"><span class="ni-ic">ðŸ“‹</span>Guide & aide</div>
     </nav>
     <div class="sb-foot">
       <div class="u-pill">
         <div class="av" id="u-av">?</div>
-        <div class="u-nm" id="u-nm">—</div>
-        <button class="btn-account" id="btn-account" title="Changer mon mot de passe">🔒</button>
-        <button class="btn-out" id="btn-out" title="Déconnexion">⏻</button>
+        <div class="u-nm" id="u-nm">â€”</div>
+        <button class="btn-account" id="btn-account" title="Changer mon mot de passe">ðŸ”’</button>
+        <button class="btn-out" id="btn-out" title="DÃ©connexion">â»</button>
       </div>
     </div>
   </aside>
@@ -533,12 +533,12 @@ body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--tx);min-heig
       <div class="tb-r">
         <div class="ex-badge" id="ex-badge" title="Cliquez pour changer d'exercice">2026</div>
         <select class="m-sel" id="m-sel" style="display:none">
-          <option value="0">Janvier</option><option value="1">Février</option>
+          <option value="0">Janvier</option><option value="1">FÃ©vrier</option>
           <option value="2">Mars</option><option value="3">Avril</option>
           <option value="4">Mai</option><option value="5">Juin</option>
-          <option value="6">Juillet</option><option value="7">Août</option>
+          <option value="6">Juillet</option><option value="7">AoÃ»t</option>
           <option value="8">Septembre</option><option value="9">Octobre</option>
-          <option value="10">Novembre</option><option value="11">Décembre</option>
+          <option value="10">Novembre</option><option value="11">DÃ©cembre</option>
         </select>
       </div>
     </header>
@@ -546,15 +546,15 @@ body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--tx);min-heig
   </main>
 </div>
 
-<!-- ══ USER MODAL ════════════════════════════════════════════ -->
+<!-- â•â• USER MODAL â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <div class="modal-bg" id="modal-bg">
   <div class="modal" id="modal">
-    <div class="modal-ti" id="modal-ti">👤 Utilisateur</div>
+    <div class="modal-ti" id="modal-ti">ðŸ‘¤ Utilisateur</div>
     <div id="modal-body"></div>
   </div>
 </div>
 
-<!-- ══ FIRST LOGIN — CHANGE PASSWORD OVERLAY ═════════════════ -->
+<!-- â•â• FIRST LOGIN â€” CHANGE PASSWORD OVERLAY â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <div class="first-login-bg" id="first-login-bg">
   <div class="first-login-card">
     <div class="fl-logo">
@@ -562,7 +562,7 @@ body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--tx);min-heig
     </div>
     <h2>Bienvenue !</h2>
     <p class="fl-sub">
-      Il s'agit de votre première connexion.<br/>
+      Il s'agit de votre premiÃ¨re connexion.<br/>
       Veuillez choisir votre <b>mot de passe personnel</b> avant de continuer.
     </p>
     <div class="mfg">
@@ -570,16 +570,16 @@ body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--tx);min-heig
       <div class="pwd-wrap">
         <input type="password" id="fl-pwd1" placeholder="Choisissez votre mot de passe"
                autocomplete="new-password" oninput="evalPwd('fl-pwd1','fl-bar','fl-lbl','fl-rules','fl-pwd2')"/>
-        <span class="pwd-eye" onclick="toggleEye('fl-pwd1',this)">👁️</span>
+        <span class="pwd-eye" onclick="toggleEye('fl-pwd1',this)">ðŸ‘ï¸</span>
       </div>
       <div class="pwd-strength-bar"><div class="pwd-strength-fill s0" id="fl-bar"></div></div>
       <div class="pwd-strength-lbl" id="fl-lbl" style="color:var(--tx-m)"></div>
       <div class="pwd-rules" id="fl-rules">
-        <div class="pwd-rule" id="fl-r1"><span class="rc">✗</span>10 caractères minimum</div>
-        <div class="pwd-rule" id="fl-r2"><span class="rc">✗</span>Une lettre majuscule</div>
-        <div class="pwd-rule" id="fl-r3"><span class="rc">✗</span>Une lettre minuscule</div>
-        <div class="pwd-rule" id="fl-r4"><span class="rc">✗</span>Un chiffre</div>
-        <div class="pwd-rule" id="fl-r5"><span class="rc">✗</span>Un caractère spécial (!@#…)</div>
+        <div class="pwd-rule" id="fl-r1"><span class="rc">âœ—</span>10 caractÃ¨res minimum</div>
+        <div class="pwd-rule" id="fl-r2"><span class="rc">âœ—</span>Une lettre majuscule</div>
+        <div class="pwd-rule" id="fl-r3"><span class="rc">âœ—</span>Une lettre minuscule</div>
+        <div class="pwd-rule" id="fl-r4"><span class="rc">âœ—</span>Un chiffre</div>
+        <div class="pwd-rule" id="fl-r5"><span class="rc">âœ—</span>Un caractÃ¨re spÃ©cial (!@#â€¦)</div>
       </div>
     </div>
     <div class="mfg" style="margin-top:.9rem">
@@ -587,35 +587,35 @@ body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--tx);min-heig
       <div class="pwd-wrap">
         <input type="password" id="fl-pwd2" placeholder="Confirmez votre mot de passe"
                autocomplete="new-password"/>
-        <span class="pwd-eye" onclick="toggleEye('fl-pwd2',this)">👁️</span>
+        <span class="pwd-eye" onclick="toggleEye('fl-pwd2',this)">ðŸ‘ï¸</span>
       </div>
     </div>
     <div class="modal-err" id="fl-err"></div>
     <button class="btn btn-gn" id="fl-btn" style="width:100%;margin-top:1rem;padding:.85rem;
       font-size:.92rem;justify-content:center">
-      ✅ Définir mon mot de passe et continuer
+      âœ… DÃ©finir mon mot de passe et continuer
     </button>
     <p style="font-size:.72rem;color:var(--tx-m);text-align:center;margin-top:.7rem">
-      Ce mot de passe vous sera demandé à chaque connexion.
+      Ce mot de passe vous sera demandÃ© Ã  chaque connexion.
     </p>
   </div>
 </div>
 
-<!-- ══ TOAST & LOADER ════════════════════════════════════════ -->
-<div class="toast" id="toast"><span id="t-i">✅</span><span id="t-m"></span></div>
-<div class="ldr" id="ldr"><div class="spin"></div><div class="ldr-l" id="ldr-l">Chargement…</div></div>
+<!-- â•â• TOAST & LOADER â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+<div class="toast" id="toast"><span id="t-i">âœ…</span><span id="t-m"></span></div>
+<div class="ldr" id="ldr"><div class="spin"></div><div class="ldr-l" id="ldr-l">Chargementâ€¦</div></div>
 
 <script>
-/* ══════════════════════════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    CONSTANTES
-══════════════════════════════════════════════════════════════ */
-const MOIS=["Janvier","Février","Mars","Avril","Mai","Juin",
-            "Juillet","Août","Septembre","Octobre","Novembre","Décembre"];
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+const MOIS=["Janvier","FÃ©vrier","Mars","Avril","Mai","Juin",
+            "Juillet","AoÃ»t","Septembre","Octobre","Novembre","DÃ©cembre"];
 const PAST=Array.from({length:6},(_,i)=>`Pasteur ${i+1}`);
 const BASE_YEAR=2026;
 const YEARS=Array.from({length:5},(_,i)=>BASE_YEAR+i); // 2026..2030
 
-/* Table username → email pour la connexion (mise à jour automatiquement) */
+/* Table username â†’ email pour la connexion (mise Ã  jour automatiquement) */
 const USER_EMAIL_MAP={
   "admin_arr":     "admin.eglisearr@gmail.com",
   "tresorier_arr": "doziri1802@gmail.com"
@@ -623,22 +623,22 @@ const USER_EMAIL_MAP={
 
 const ROLES={
   admin:    {label:"Administrateur",edit:true, manage:true},
-  tresorier:{label:"Trésorier",     edit:true, manage:true},
+  tresorier:{label:"TrÃ©sorier",     edit:true, manage:true},
   pasteur:  {label:"Pasteur",       edit:false,manage:false},
   lecteur:  {label:"Lecteur",       edit:false,manage:false},
 };
 
-/* Comptes démo : username → { email interne, mdp, rôle, nom affiché } */
+/* Comptes dÃ©mo : username â†’ { email interne, mdp, rÃ´le, nom affichÃ© } */
 const DEMOS={
   admin_arr:    {email:"admin@arr.demo",    p:"admin2026",    r:"admin",    n:"Administrateur ARR"},
-  tresorier_arr:{email:"tresorier@arr.demo",p:"tresorier2026",r:"tresorier",n:"Trésorier ARR"},
+  tresorier_arr:{email:"tresorier@arr.demo",p:"tresorier2026",r:"tresorier",n:"TrÃ©sorier ARR"},
   pasteur_arr:  {email:"pasteur@arr.demo",  p:"pasteur2026",  r:"pasteur",  n:"Pasteur Principal"},
-  lecteur_arr:  {email:"lecteur@arr.demo",  p:"lecteur2026",  r:"lecteur",  n:"Membre Comité"},
+  lecteur_arr:  {email:"lecteur@arr.demo",  p:"lecteur2026",  r:"lecteur",  n:"Membre ComitÃ©"},
 };
 
-/* ══════════════════════════════════════════════════════════════
-   ÉTAT GLOBAL
-══════════════════════════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   Ã‰TAT GLOBAL
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 const S={
   user:null, role:"lecteur", name:"", login:"", uid:"",
   pg:"dash", mi:new Date().getMonth(), year:BASE_YEAR,
@@ -648,25 +648,25 @@ const S={
   allUsers:[], /* cache pour la page users */
 };
 
-/* Init data store pour toutes les années */
+/* Init data store pour toutes les annÃ©es */
 YEARS.forEach(y=>{ S.data[y]={}; for(let i=0;i<12;i++) S.data[y][i]=defMonth(); });
 
 function defMonth(){
   const d={
-    salaires:PAST.map(p=>({label:`Salaire — ${p}`,prev:150000,reel:0})),
-    loyers:PAST.map(p=>({label:`Loyer — ${p}`,prev:75000,reel:0})).concat([
-      {label:"Temple Siège",prev:300000,reel:0},
+    salaires:PAST.map(p=>({label:`Salaire â€” ${p}`,prev:150000,reel:0})),
+    loyers:PAST.map(p=>({label:`Loyer â€” ${p}`,prev:75000,reel:0})).concat([
+      {label:"Temple SiÃ¨ge",prev:300000,reel:0},
       {label:"Bureau Pasteur Principal",prev:100000,reel:0}]),
     factures:[
-      {label:"⚡ Électricité (CIE)",prev:80000,reel:0},
-      {label:"💧 Eau (SODECI)",     prev:30000,reel:0},
-      {label:"🌐 Internet",         prev:50000,reel:0}],
+      {label:"âš¡ Ã‰lectricitÃ© (CIE)",prev:80000,reel:0},
+      {label:"ðŸ’§ Eau (SODECI)",     prev:30000,reel:0},
+      {label:"ðŸŒ Internet",         prev:50000,reel:0}],
     divers:[
-      {label:"Évangélisation / Missions",prev:0,reel:0},
+      {label:"Ã‰vangÃ©lisation / Missions",prev:0,reel:0},
       {label:"Fournitures de bureau",    prev:0,reel:0},
       {label:"Transport / Carburant",    prev:0,reel:0},
-      {label:"Entretien / Réparations",  prev:0,reel:0},
-      {label:"Autre dépense diverse",    prev:0,reel:0}],
+      {label:"Entretien / RÃ©parations",  prev:0,reel:0},
+      {label:"Autre dÃ©pense diverse",    prev:0,reel:0}],
     dimanche:[],semaine:[],
     speciales:[
       {label:"Virement bancaire",    prev:50000,reel:0},
@@ -674,18 +674,18 @@ function defMonth(){
       {label:"Autres offrandes",     prev:50000,reel:0}],
   };
   for(let i=1;i<=4;i++){
-    d.dimanche.push({label:`Dimanche ${i} — Dîmes`,    prev:200000,reel:0},
-                    {label:`Dimanche ${i} — Offrandes`,prev:80000, reel:0});
+    d.dimanche.push({label:`Dimanche ${i} â€” DÃ®mes`,    prev:200000,reel:0},
+                    {label:`Dimanche ${i} â€” Offrandes`,prev:80000, reel:0});
   }
   ["Mardi","Jeudi"].forEach(j=>{
-    for(let i=1;i<=4;i++) d.semaine.push({label:`${j} S${i} — Offrandes`,prev:30000,reel:0});
+    for(let i=1;i<=4;i++) d.semaine.push({label:`${j} S${i} â€” Offrandes`,prev:30000,reel:0});
   });
   return d;
 }
 
-/* ══ UTILS ══════════════════════════════════════════════════ */
-const fmt=n=>isNaN(n)||n===null?"—":new Intl.NumberFormat("fr-FR",{maximumFractionDigits:0}).format(n).replace(/ /g," ").replace(/ /g," ")+" FCFA";
-const fmtP=n=>(!n||isNaN(n))?"—":(n*100).toFixed(1)+" %";
+/* â•â• UTILS â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+const fmt=n=>isNaN(n)||n===null?"â€”":new Intl.NumberFormat("fr-FR",{maximumFractionDigits:0}).format(n).replace(/â€¯/g," ").replace(/Â /g," ")+" FCFA";
+const fmtP=n=>(!n||isNaN(n))?"â€”":(n*100).toFixed(1)+" %";
 const sum=a=>a.reduce((s,v)=>s+(v||0),0);
 const ps=(arr,f)=>sum(arr.map(x=>x[f]||0));
 const canEdit=()=>ROLES[S.role]?.edit;
@@ -694,19 +694,19 @@ const canMgr=()=>ROLES[S.role]?.manage;
 function toast(msg,t="ok"){
   const el=document.getElementById("toast");
   document.getElementById("t-m").textContent=msg;
-  document.getElementById("t-i").textContent=t==="ok"?"✅":t==="er"?"❌":"ℹ️";
+  document.getElementById("t-i").textContent=t==="ok"?"âœ…":t==="er"?"âŒ":"â„¹ï¸";
   el.className=`toast on ${t}`;setTimeout(()=>el.className="toast",3200);
 }
-const ldr=(on,l="Chargement…")=>{
+const ldr=(on,l="Chargementâ€¦")=>{
   document.getElementById("ldr").classList.toggle("on",on);
   document.getElementById("ldr-l").textContent=l;
 };
 function bdg(r,p,isC=false){
-  if(!p&&!r) return'<span class="bdg em">—</span>';
-  if(isC) return r>=p?'<span class="bdg ok">✅ Payé</span>':'<span class="bdg wn">⚠️ À payer</span>';
-  if(r>=p)  return'<span class="bdg ok">✅ OK</span>';
-  if(r>=p*.8)return'<span class="bdg wn">⚠️ Attention</span>';
-  return'<span class="bdg dg">🔴 Alerte</span>';
+  if(!p&&!r) return'<span class="bdg em">â€”</span>';
+  if(isC) return r>=p?'<span class="bdg ok">âœ… PayÃ©</span>':'<span class="bdg wn">âš ï¸ Ã€ payer</span>';
+  if(r>=p)  return'<span class="bdg ok">âœ… OK</span>';
+  if(r>=p*.8)return'<span class="bdg wn">âš ï¸ Attention</span>';
+  return'<span class="bdg dg">ðŸ”´ Alerte</span>';
 }
 function openModal(title,bodyHTML){
   document.getElementById("modal-ti").innerHTML=title;
@@ -718,7 +718,7 @@ document.getElementById("modal-bg").addEventListener("click",e=>{
   if(e.target===document.getElementById("modal-bg")) closeModal();
 });
 
-/* ══ EXERCISE SELECTOR ══════════════════════════════════════ */
+/* â•â• EXERCISE SELECTOR â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 function buildExSel(){
   const sel=document.getElementById("ex-sel");
   sel.innerHTML=YEARS.map(y=>`<option value="${y}"${y===S.year?" selected":""}>${y}</option>`).join("");
@@ -733,7 +733,7 @@ function buildExSel(){
   });
 }
 
-/* ══ FIREBASE HELPERS ══════════════════════════════════════ */
+/* â•â• FIREBASE HELPERS â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 async function fbSave(mi){
   if(!window._fb?.configured||!S.user) return false;
   const{db,ref,set}=window._fb;
@@ -774,9 +774,9 @@ async function fbLoadAllUsers(){
   }catch(e){console.warn("fbLoadAllUsers:",e);return [];}
 }
 
-/* ══════════════════════════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    GESTION MOT DE PASSE
-══════════════════════════════════════════════════════════════ */
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 const PWD_RULES=[
   {test:p=>p.length>=10},
   {test:p=>/[A-Z]/.test(p)},
@@ -791,7 +791,7 @@ function validatePwd(p){
 function toggleEye(id,btn){
   const inp=document.getElementById(id);if(!inp)return;
   inp.type=inp.type==="password"?"text":"password";
-  btn.textContent=inp.type==="password"?"👁️":"🙈";
+  btn.textContent=inp.type==="password"?"ðŸ‘ï¸":"ðŸ™ˆ";
 }
 window.toggleEye=toggleEye;
 
@@ -800,14 +800,14 @@ function evalPwd(inputId,barId,lblId,rulesPrefix,confirmId){
   const v=validatePwd(pwd);
   const bar=document.getElementById(barId);
   const lbl=document.getElementById(lblId);
-  const levels=["","Très faible","Faible","Moyen","Fort","Très fort"];
+  const levels=["","TrÃ¨s faible","Faible","Moyen","Fort","TrÃ¨s fort"];
   const colors=["","#ef5350","#FF7043","#FFA726","#66BB6A","#2E7D32"];
   if(bar)bar.className=`pwd-strength-fill s${pwd?v.score:0}`;
   if(lbl){lbl.textContent=pwd?levels[v.score]:"";lbl.style.color=pwd?colors[v.score]:"var(--tx-m)";}
   [1,2,3,4,5].forEach((n,i)=>{
     const el=document.getElementById(`${rulesPrefix}-r${n}`);if(!el)return;
     el.classList.toggle("ok",v.rules[i]);
-    el.querySelector(".rc").textContent=v.rules[i]?"✓":"✗";
+    el.querySelector(".rc").textContent=v.rules[i]?"âœ“":"âœ—";
   });
   const conf=document.getElementById(confirmId);
   if(conf&&conf.value){
@@ -827,11 +827,11 @@ async function doFirstLoginChange(){
   const err=document.getElementById("fl-err");
   err.classList.remove("on");
   const v=validatePwd(pwd1);
-  if(!v.ok){err.textContent="Le mot de passe ne respecte pas toutes les règles.";err.classList.add("on");
+  if(!v.ok){err.textContent="Le mot de passe ne respecte pas toutes les rÃ¨gles.";err.classList.add("on");
     document.getElementById("fl-btn").addEventListener("click",doFirstLoginChange,{once:true});return;}
   if(pwd1!==pwd2){err.textContent="Les deux mots de passe ne correspondent pas.";err.classList.add("on");
     document.getElementById("fl-btn").addEventListener("click",doFirstLoginChange,{once:true});return;}
-  ldr(true,"Mise à jour du mot de passe…");
+  ldr(true,"Mise Ã  jour du mot de passeâ€¦");
   if(window._fb?.configured&&S.user){
     try{
       await window._fb.updatePassword(S.user,pwd1);
@@ -841,30 +841,30 @@ async function doFirstLoginChange(){
         await set(ref(db,"arr_users/"+S.user.uid),{...snap.val(),mustChangePwd:false});
       }
       ldr(false);document.getElementById("first-login-bg").classList.remove("on");
-      toast("✅ Mot de passe défini avec succès !");
+      toast("âœ… Mot de passe dÃ©fini avec succÃ¨s !");
     }catch(e){
       ldr(false);
-      err.textContent=e.code==="auth/requires-recent-login"?"Reconnectez-vous et réessayez.":"Erreur : "+e.message;
+      err.textContent=e.code==="auth/requires-recent-login"?"Reconnectez-vous et rÃ©essayez.":"Erreur : "+e.message;
       err.classList.add("on");
       document.getElementById("fl-btn").addEventListener("click",doFirstLoginChange,{once:true});
     }
   }else{
     ldr(false);document.getElementById("first-login-bg").classList.remove("on");
-    toast("Mot de passe défini (mode démo)","in");
+    toast("Mot de passe dÃ©fini (mode dÃ©mo)","in");
   }
 }
 
 function openChangePwdModal(){
-  openModal("🔒 Changer mon mot de passe",`
+  openModal("ðŸ”’ Changer mon mot de passe",`
     <p style="font-size:.83rem;color:var(--tx-s);margin-bottom:1rem;line-height:1.55">
-      Votre mot de passe doit contenir au minimum <b>10 caractères</b>,
-      une <b>majuscule</b>, une <b>minuscule</b>, un <b>chiffre</b> et un <b>caractère spécial</b>.
+      Votre mot de passe doit contenir au minimum <b>10 caractÃ¨res</b>,
+      une <b>majuscule</b>, une <b>minuscule</b>, un <b>chiffre</b> et un <b>caractÃ¨re spÃ©cial</b>.
     </p>
     <div class="mfg">
       <label>Mot de passe actuel</label>
       <div class="pwd-wrap">
         <input type="password" id="cp-old" placeholder="Votre mot de passe actuel" autocomplete="current-password"/>
-        <span class="pwd-eye" onclick="toggleEye('cp-old',this)">👁️</span>
+        <span class="pwd-eye" onclick="toggleEye('cp-old',this)">ðŸ‘ï¸</span>
       </div>
     </div>
     <div class="mfg">
@@ -872,23 +872,23 @@ function openChangePwdModal(){
       <div class="pwd-wrap">
         <input type="password" id="cp-new1" placeholder="Nouveau mot de passe" autocomplete="new-password"
                oninput="evalPwd('cp-new1','cp-bar','cp-lbl','cp-rules','cp-new2')"/>
-        <span class="pwd-eye" onclick="toggleEye('cp-new1',this)">👁️</span>
+        <span class="pwd-eye" onclick="toggleEye('cp-new1',this)">ðŸ‘ï¸</span>
       </div>
       <div class="pwd-strength-bar"><div class="pwd-strength-fill s0" id="cp-bar"></div></div>
       <div class="pwd-strength-lbl" id="cp-lbl" style="color:var(--tx-m)"></div>
       <div class="pwd-rules" id="cp-rules-wrap">
-        <div class="pwd-rule" id="cp-rules-r1"><span class="rc">✗</span>10 caractères minimum</div>
-        <div class="pwd-rule" id="cp-rules-r2"><span class="rc">✗</span>Une majuscule</div>
-        <div class="pwd-rule" id="cp-rules-r3"><span class="rc">✗</span>Une minuscule</div>
-        <div class="pwd-rule" id="cp-rules-r4"><span class="rc">✗</span>Un chiffre</div>
-        <div class="pwd-rule" id="cp-rules-r5"><span class="rc">✗</span>Un caractère spécial</div>
+        <div class="pwd-rule" id="cp-rules-r1"><span class="rc">âœ—</span>10 caractÃ¨res minimum</div>
+        <div class="pwd-rule" id="cp-rules-r2"><span class="rc">âœ—</span>Une majuscule</div>
+        <div class="pwd-rule" id="cp-rules-r3"><span class="rc">âœ—</span>Une minuscule</div>
+        <div class="pwd-rule" id="cp-rules-r4"><span class="rc">âœ—</span>Un chiffre</div>
+        <div class="pwd-rule" id="cp-rules-r5"><span class="rc">âœ—</span>Un caractÃ¨re spÃ©cial</div>
       </div>
     </div>
     <div class="mfg">
       <label>Confirmer le nouveau mot de passe</label>
       <div class="pwd-wrap">
         <input type="password" id="cp-new2" placeholder="Confirmez le nouveau mot de passe" autocomplete="new-password"/>
-        <span class="pwd-eye" onclick="toggleEye('cp-new2',this)">👁️</span>
+        <span class="pwd-eye" onclick="toggleEye('cp-new2',this)">ðŸ‘ï¸</span>
       </div>
     </div>
     <div class="modal-err" id="cp-err"></div>
@@ -905,24 +905,24 @@ function openChangePwdModal(){
     err.classList.remove("on");
     if(!old){err.textContent="Saisissez votre mot de passe actuel.";err.classList.add("on");return;}
     const v=validatePwd(n1);
-    if(!v.ok){err.textContent="Le nouveau mot de passe ne respecte pas toutes les règles.";err.classList.add("on");return;}
+    if(!v.ok){err.textContent="Le nouveau mot de passe ne respecte pas toutes les rÃ¨gles.";err.classList.add("on");return;}
     if(n1!==n2){err.textContent="Les deux nouveaux mots de passe ne correspondent pas.";err.classList.add("on");return;}
-    if(old===n1){err.textContent="Le nouveau mot de passe doit être différent de l'ancien.";err.classList.add("on");return;}
-    ldr(true,"Mise à jour…");
+    if(old===n1){err.textContent="Le nouveau mot de passe doit Ãªtre diffÃ©rent de l'ancien.";err.classList.add("on");return;}
+    ldr(true,"Mise Ã  jourâ€¦");
     if(window._fb?.configured&&S.user){
       try{
         const{signInWithEmailAndPassword,updatePassword,auth}=window._fb;
         await signInWithEmailAndPassword(auth,S.user.email,old);
         await updatePassword(S.user,n1);
-        ldr(false);closeModal();toast("✅ Mot de passe changé avec succès !");
+        ldr(false);closeModal();toast("âœ… Mot de passe changÃ© avec succÃ¨s !");
       }catch(e){
         ldr(false);
         const msgs={"auth/wrong-password":"Mot de passe actuel incorrect.",
-          "auth/too-many-requests":"Trop de tentatives. Réessayez plus tard.",
-          "auth/requires-recent-login":"Reconnectez-vous et réessayez."};
+          "auth/too-many-requests":"Trop de tentatives. RÃ©essayez plus tard.",
+          "auth/requires-recent-login":"Reconnectez-vous et rÃ©essayez."};
         err.textContent=msgs[e.code]||"Erreur : "+e.message;err.classList.add("on");
       }
-    }else{ldr(false);closeModal();toast("Mot de passe changé (mode démo)","in");}
+    }else{ldr(false);closeModal();toast("Mot de passe changÃ© (mode dÃ©mo)","in");}
   });
 }
 
@@ -937,7 +937,7 @@ function generatePwd(){
 
 window.generatePwd=generatePwd;
 
-/* ══ AUTH ═══════════════════════════════════════════════════ */
+/* â•â• AUTH â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 function initAuth(){
   const doLogin=async()=>{
     const usr=document.getElementById("l-usr").value.trim().toLowerCase();
@@ -945,7 +945,7 @@ function initAuth(){
     const err=document.getElementById("l-err");
     err.classList.remove("on");
     if(!usr||!pw){err.textContent="Veuillez remplir tous les champs.";err.classList.add("on");return;}
-    ldr(true,"Connexion…");
+    ldr(true,"Connexionâ€¦");
     try{
       if(window._fb?.configured){
         const emailToUse=USER_EMAIL_MAP[usr]||null;
@@ -957,13 +957,13 @@ function initAuth(){
         }
         // Connexion Firebase Auth
         const cred=await window._fb.signInWithEmailAndPassword(window._fb.auth,emailToUse,pw);
-        // Connexion réussie — charger le profil et ouvrir l'app immédiatement
+        // Connexion rÃ©ussie â€” charger le profil et ouvrir l'app immÃ©diatement
         S.user=cred.user;
         S.login=usr;
         S.name=usr;
         S.role="lecteur";
         S.mustChangePwd=false;
-        // Déduire le rôle immédiatement depuis le username (sans attendre la DB)
+        // DÃ©duire le rÃ´le immÃ©diatement depuis le username (sans attendre la DB)
         const ROLE_MAP={
           "admin_arr":"admin",
           "tresorier_arr":"tresorier"
@@ -988,7 +988,7 @@ function initAuth(){
             S.mustChangePwd=dat.mustChangePwd===true;
           }
         }catch(e2){
-          console.warn("Profil DB non chargé — rôle déduit depuis username");
+          console.warn("Profil DB non chargÃ© â€” rÃ´le dÃ©duit depuis username");
         }
         ldr(false);
         onLoggedIn();
@@ -1009,18 +1009,18 @@ function initAuth(){
     document.getElementById("l-pw").value=b.dataset.p;
     doLogin();
   }));
-  if(false&&window._fb?.configured&&window._fb.onAuthStateChanged){ // Désactivé — login géré par doLogin
+  if(false&&window._fb?.configured&&window._fb.onAuthStateChanged){ // DÃ©sactivÃ© â€” login gÃ©rÃ© par doLogin
     window._fb.onAuthStateChanged(window._fb.auth,async user=>{
       ldr(false); // Toujours cacher le loader d'abord
       if(user){
-        // Connexion immédiate sans attente base de données
+        // Connexion immÃ©diate sans attente base de donnÃ©es
         S.user=user;
         S.name=user.displayName||user.email;
         S.login=user.email;
         S.role="lecteur";
         S.mustChangePwd=false;
         onLoggedIn();
-        // Charger le profil depuis Realtime Database en arrière-plan
+        // Charger le profil depuis Realtime Database en arriÃ¨re-plan
         const{db,ref,get}=window._fb;
         get(ref(db,"arr_users/"+user.uid)).then(snap=>{
           if(!snap.exists()) return;
@@ -1040,7 +1040,7 @@ function initAuth(){
           if(nu)nu.style.display=canMgr()?"flex":"none";
           if(S.mustChangePwd)setTimeout(showFirstLogin,800);
         }).catch(e=>console.warn("Profil:",e));
-        // Données exercice en arrière-plan
+        // DonnÃ©es exercice en arriÃ¨re-plan
         fbLoadYear(S.year).then(()=>navigate(S.pg)).catch(()=>{});
       }else showLogin();
     });
@@ -1078,11 +1078,11 @@ document.getElementById("btn-out").addEventListener("click",async()=>{
   S.user=null;showLogin();
 });
 
-/* ══ NAV ════════════════════════════════════════════════════ */
+/* â•â• NAV â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 function buildMnav(){
   const list=document.getElementById("mlist");
   list.innerHTML=MOIS.map((m,i)=>`<div class="ni" data-pg="month" data-mi="${i}"
-    style="padding-left:2rem;font-size:.81rem"><span style="font-size:.68rem;margin-right:.28rem">▸</span>${m}</div>`).join("");
+    style="padding-left:2rem;font-size:.81rem"><span style="font-size:.68rem;margin-right:.28rem">â–¸</span>${m}</div>`).join("");
   list.querySelectorAll(".ni").forEach(el=>el.addEventListener("click",()=>{
     S.mi=parseInt(el.dataset.mi);document.getElementById("m-sel").value=S.mi;navigate("month");
   }));
@@ -1104,14 +1104,14 @@ function navigate(pg){
   document.querySelectorAll(".ni").forEach(el=>{
     el.classList.toggle("active",el.dataset.pg===pg&&(pg!=="month"||parseInt(el.dataset.mi)===S.mi));
   });
-  const tt={dash:"Tableau de bord",recap:"Récapitulatif annuel",month:MOIS[S.mi],users:"Utilisateurs",guide:"Guide & Aide"};
+  const tt={dash:"Tableau de bord",recap:"RÃ©capitulatif annuel",month:MOIS[S.mi],users:"Utilisateurs",guide:"Guide & Aide"};
   document.getElementById("pg-ti").textContent=tt[pg]||pg;
   document.getElementById("bc").textContent=pg==="month"?`Saisie ${S.year}`:pg==="recap"?`Vue ${S.year}`:"";
   document.getElementById("m-sel").style.display=pg==="month"?"block":"none";
   ({dash:renderDash,recap:renderRecap,month:renderMonth,users:renderUsers,guide:renderGuide}[pg]||renderDash)();
 }
 
-/* ══ CALCULS ════════════════════════════════════════════════ */
+/* â•â• CALCULS â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 function calc(mi,y=S.year){
   const d=S.data[y][mi];
   const CH=["salaires","loyers","factures","divers"],RE=["dimanche","semaine","speciales"];
@@ -1123,41 +1123,41 @@ function calc(mi,y=S.year){
   };
 }
 
-/* ══ DASHBOARD ══════════════════════════════════════════════ */
+/* â•â• DASHBOARD â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 function renderDash(){
   const c=calc(S.mi),m=MOIS[S.mi],tp=c.tx*100;
   document.getElementById("content").innerHTML=`
     <div style="margin-bottom:1.2rem">
       <h2 style="font-family:'Cinzel',serif;color:var(--nv);font-size:1.18rem">
-        ${m} ${S.year} — Vue d'ensemble
+        ${m} ${S.year} â€” Vue d'ensemble
       </h2>
       <p style="color:var(--tx-m);font-size:.82rem;margin-top:.18rem">
-        Connecté : <b>${S.name}</b>
+        ConnectÃ© : <b>${S.name}</b>
         <span class="rtag ${S.role}" style="margin-left:.38rem">${ROLES[S.role]?.label}</span>
       </p>
     </div>
     <div class="krow">
-      <div class="kpi gn"><div class="kic">💰</div><div class="kl">Ressources réelles</div>
-        <div class="kv pos">${fmt(c.rR)}</div><div class="ks">Prévision : ${fmt(c.rP)}</div></div>
-      <div class="kpi rd"><div class="kic">📤</div><div class="kl">Charges réelles</div>
-        <div class="kv neg">${fmt(c.cR)}</div><div class="ks">Prévision : ${fmt(c.cP)}</div></div>
-      <div class="kpi ${c.sR>=0?"gn":"rd"}"><div class="kic">⚖️</div><div class="kl">Solde net du mois</div>
+      <div class="kpi gn"><div class="kic">ðŸ’°</div><div class="kl">Ressources rÃ©elles</div>
+        <div class="kv pos">${fmt(c.rR)}</div><div class="ks">PrÃ©vision : ${fmt(c.rP)}</div></div>
+      <div class="kpi rd"><div class="kic">ðŸ“¤</div><div class="kl">Charges rÃ©elles</div>
+        <div class="kv neg">${fmt(c.cR)}</div><div class="ks">PrÃ©vision : ${fmt(c.cP)}</div></div>
+      <div class="kpi ${c.sR>=0?"gn":"rd"}"><div class="kic">âš–ï¸</div><div class="kl">Solde net du mois</div>
         <div class="kv ${c.sR>=0?"pos":"neg"}">${fmt(c.sR)}</div>
-        <div class="ks">${c.sR>=0?"✅ Excédent":"🔴 Déficit"}</div></div>
-      <div class="kpi ${tp>=100?"gn":tp>=80?"gd":"rd"}"><div class="kic">📊</div><div class="kl">Taux de couverture</div>
+        <div class="ks">${c.sR>=0?"âœ… ExcÃ©dent":"ðŸ”´ DÃ©ficit"}</div></div>
+      <div class="kpi ${tp>=100?"gn":tp>=80?"gd":"rd"}"><div class="kic">ðŸ“Š</div><div class="kl">Taux de couverture</div>
         <div class="kv">${fmtP(c.tx)}</div>
-        <div class="ks">${tp>=100?"✅ Charges couvertes":tp>=80?"⚠️ Attention":"🔴 Critique"}</div></div>
+        <div class="ks">${tp>=100?"âœ… Charges couvertes":tp>=80?"âš ï¸ Attention":"ðŸ”´ Critique"}</div></div>
     </div>
     <div class="cg">
-      <div class="cc2"><div class="ct2">Ressources vs Charges — ${m} ${S.year}</div><div class="cw"><canvas id="c1"></canvas></div></div>
-      <div class="cc2"><div class="ct2">Répartition des Charges</div><div class="cw"><canvas id="c2"></canvas></div></div>
+      <div class="cc2"><div class="ct2">Ressources vs Charges â€” ${m} ${S.year}</div><div class="cw"><canvas id="c1"></canvas></div></div>
+      <div class="cc2"><div class="ct2">RÃ©partition des Charges</div><div class="cw"><canvas id="c2"></canvas></div></div>
     </div>
     <div class="cg full">
-      <div class="cc2"><div class="ct2">Évolution du Solde net — ${S.year}</div><div class="cw"><canvas id="c3"></canvas></div></div>
+      <div class="cc2"><div class="ct2">Ã‰volution du Solde net â€” ${S.year}</div><div class="cw"><canvas id="c3"></canvas></div></div>
     </div>`;
 
   S.charts.c1=new Chart(document.getElementById("c1"),{type:"bar",
-    data:{labels:["Prévision","Réel"],datasets:[
+    data:{labels:["PrÃ©vision","RÃ©el"],datasets:[
       {label:"Ressources",data:[c.rP,c.rR],backgroundColor:["rgba(45,80,22,.4)","rgba(45,80,22,.88)"],borderColor:"#2D5016",borderWidth:1.5,borderRadius:6},
       {label:"Charges",   data:[c.cP,c.cR],backgroundColor:["rgba(139,0,0,.4)","rgba(139,0,0,.88)"],borderColor:"#8B0000",borderWidth:1.5,borderRadius:6}]},
     options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:"bottom"}},scales:{y:{ticks:{callback:v=>(v/1000)+"K"}}}}});
@@ -1168,21 +1168,21 @@ function renderDash(){
     options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:"bottom"}}}});
   const ld=MOIS.map((_,i)=>calc(i).sR);
   S.charts.c3=new Chart(document.getElementById("c3"),{type:"line",
-    data:{labels:MOIS.map(m=>m.slice(0,3)),datasets:[{label:"Solde réel",data:ld,
+    data:{labels:MOIS.map(m=>m.slice(0,3)),datasets:[{label:"Solde rÃ©el",data:ld,
       borderColor:"#1A2E5A",backgroundColor:"rgba(26,46,90,.07)",borderWidth:2.5,fill:true,tension:.4,
       pointBackgroundColor:ld.map(v=>v>=0?"#2D5016":"#C62828"),pointRadius:5}]},
     options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
       scales:{y:{ticks:{callback:v=>(v/1000)+"K"},grid:{color:"rgba(0,0,0,.05)"}},x:{grid:{display:false}}}}});
 }
 
-/* ══ SAISIE MENSUELLE ═══════════════════════════════════════ */
+/* â•â• SAISIE MENSUELLE â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 function renderMonth(){
   const mi=S.mi,d=S.data[S.year][mi],c=calc(mi),edit=canEdit(),inp=edit?"":` disabled`;
   function rows(arr,sec,isC,isL=false){
     return arr.map((r,i)=>{
       const e=r.reel-r.prev,p=r.prev?r.reel/r.prev:0;
       const lbl=isL&&edit
-        ?`<input class="inp-lb" data-s="${sec}" data-i="${i}" data-f="label" value="${r.label}" placeholder="Nom de la rubrique…"/>`
+        ?`<input class="inp-lb" data-s="${sec}" data-i="${i}" data-f="label" value="${r.label}" placeholder="Nom de la rubriqueâ€¦"/>`
         :`<span style="${isL?"color:var(--vi);font-style:italic":""}">${r.label}</span>`;
       return`<tr><td>${lbl}</td>
         <td><input class="inp${isL?" vi":""}" type="number" data-s="${sec}" data-i="${i}" data-f="prev" value="${r.prev}"${inp}/></td>
@@ -1199,53 +1199,53 @@ function renderMonth(){
   }
   document.getElementById("content").innerHTML=`
     <div class="abar">
-      ${edit?`<button class="btn btn-gn" id="btn-sv">💾 Sauvegarder</button>`:""}
-      <button class="btn btn-nv btn-sm" id="btn-pdf">📄 PDF</button>
-      <button class="btn btn-gd btn-sm" id="btn-xl">📊 Excel</button>
+      ${edit?`<button class="btn btn-gn" id="btn-sv">ðŸ’¾ Sauvegarder</button>`:""}
+      <button class="btn btn-nv btn-sm" id="btn-pdf">ðŸ“„ PDF</button>
+      <button class="btn btn-gd btn-sm" id="btn-xl">ðŸ“Š Excel</button>
       <div class="sp"></div>
-      ${!edit?`<div class="ro-tag">🔒 Lecture seule — ${ROLES[S.role]?.label}</div>`:""}
+      ${!edit?`<div class="ro-tag">ðŸ”’ Lecture seule â€” ${ROLES[S.role]?.label}</div>`:""}
     </div>
     <div class="krow">
-      <div class="kpi rd"><div class="kl">Charges prév.</div><div class="kv">${fmt(c.cP)}</div></div>
-      <div class="kpi rd"><div class="kl">Charges réelles</div><div class="kv neg">${fmt(c.cR)}</div></div>
-      <div class="kpi gn"><div class="kl">Ressources réelles</div><div class="kv pos">${fmt(c.rR)}</div></div>
+      <div class="kpi rd"><div class="kl">Charges prÃ©v.</div><div class="kv">${fmt(c.cP)}</div></div>
+      <div class="kpi rd"><div class="kl">Charges rÃ©elles</div><div class="kv neg">${fmt(c.cR)}</div></div>
+      <div class="kpi gn"><div class="kl">Ressources rÃ©elles</div><div class="kv pos">${fmt(c.rR)}</div></div>
       <div class="kpi ${c.sR>=0?"gn":"rd"}"><div class="kl">Solde net</div><div class="kv ${c.sR>=0?"pos":"neg"}">${fmt(c.sR)}</div></div>
     </div>
     <div class="card"><div class="ch2 cc">
-      <span class="ctl cc">💸 CHARGES & DÉPENSES — ${MOIS[mi]} ${S.year}</span>
+      <span class="ctl cc">ðŸ’¸ CHARGES & DÃ‰PENSES â€” ${MOIS[mi]} ${S.year}</span>
       <span class="c-tot cc">${fmt(c.cR)} / ${fmt(c.cP)}</span></div>
       <div style="overflow-x:auto"><table class="dt"><thead><tr>
-        <th style="width:34%">Rubrique</th><th>Prévision</th><th>Réel</th><th>Écart</th><th>%</th><th>Statut</th>
+        <th style="width:34%">Rubrique</th><th>PrÃ©vision</th><th>RÃ©el</th><th>Ã‰cart</th><th>%</th><th>Statut</th>
       </tr></thead><tbody>
-        ${blk("💼 Salaires","salaires",d.salaires,true)}
-        ${blk("🏠 Loyers & Locations","loyers",d.loyers,true)}
-        ${blk("⚡ Factures","factures",d.factures,true)}
-        ${blk("🟣 Dépenses Diverses (libres)","divers",d.divers,true,true)}
-        <tr class="gt"><td>🔴 TOTAL CHARGES</td><td>${fmt(c.cP)}</td><td>${fmt(c.cR)}</td>
+        ${blk("ðŸ’¼ Salaires","salaires",d.salaires,true)}
+        ${blk("ðŸ  Loyers & Locations","loyers",d.loyers,true)}
+        ${blk("âš¡ Factures","factures",d.factures,true)}
+        ${blk("ðŸŸ£ DÃ©penses Diverses (libres)","divers",d.divers,true,true)}
+        <tr class="gt"><td>ðŸ”´ TOTAL CHARGES</td><td>${fmt(c.cP)}</td><td>${fmt(c.cR)}</td>
           <td style="color:var(--${c.cR<=c.cP?"fo":"cr-lt"})">${fmt(c.cR-c.cP)}</td>
           <td>${fmtP(c.cP?c.cR/c.cP:0)}</td><td></td></tr>
       </tbody></table></div></div>
     <div class="card"><div class="ch2 rr">
-      <span class="ctl rr">💰 RESSOURCES — ${MOIS[mi]} ${S.year}</span>
+      <span class="ctl rr">ðŸ’° RESSOURCES â€” ${MOIS[mi]} ${S.year}</span>
       <span class="c-tot rr">${fmt(c.rR)} / ${fmt(c.rP)}</span></div>
       <div style="overflow-x:auto"><table class="dt"><thead><tr>
-        <th style="width:34%">Rubrique</th><th>Prévision</th><th>Réel</th><th>Écart</th><th>%</th><th>Statut</th>
+        <th style="width:34%">Rubrique</th><th>PrÃ©vision</th><th>RÃ©el</th><th>Ã‰cart</th><th>%</th><th>Statut</th>
       </tr></thead><tbody>
-        ${blk("⛪ Cultes Dimanche","dimanche",d.dimanche,false)}
-        ${blk("📅 Cultes Semaine","semaine",d.semaine,false)}
-        ${blk("💳 Offrandes Spéciales","speciales",d.speciales,false)}
-        <tr class="gt"><td>🟢 TOTAL RESSOURCES</td><td>${fmt(c.rP)}</td><td>${fmt(c.rR)}</td>
+        ${blk("â›ª Cultes Dimanche","dimanche",d.dimanche,false)}
+        ${blk("ðŸ“… Cultes Semaine","semaine",d.semaine,false)}
+        ${blk("ðŸ’³ Offrandes SpÃ©ciales","speciales",d.speciales,false)}
+        <tr class="gt"><td>ðŸŸ¢ TOTAL RESSOURCES</td><td>${fmt(c.rP)}</td><td>${fmt(c.rR)}</td>
           <td style="color:var(--${c.rR>=c.rP?"fo":"cr-lt"})">${fmt(c.rR-c.rP)}</td>
           <td>${fmtP(c.rP?c.rR/c.rP:0)}</td><td></td></tr>
       </tbody></table></div></div>
     <div class="krow">
-      <div class="kpi gd"><div class="kl">Solde prévisionnel</div><div class="kv neu">${fmt(c.sP)}</div></div>
-      <div class="kpi ${c.sR>=0?"gn":"rd"}"><div class="kl">Solde réel</div>
+      <div class="kpi gd"><div class="kl">Solde prÃ©visionnel</div><div class="kv neu">${fmt(c.sP)}</div></div>
+      <div class="kpi ${c.sR>=0?"gn":"rd"}"><div class="kl">Solde rÃ©el</div>
         <div class="kv ${c.sR>=0?"pos":"neg"}">${fmt(c.sR)}</div>
-        <div class="ks">${c.sR>=0?"✅ EXCÉDENT":"🔴 DÉFICIT"}</div></div>
+        <div class="ks">${c.sR>=0?"âœ… EXCÃ‰DENT":"ðŸ”´ DÃ‰FICIT"}</div></div>
       <div class="kpi ${c.tx>=1?"gn":c.tx>=.8?"gd":"rd"}"><div class="kl">Taux de couverture</div>
         <div class="kv">${fmtP(c.tx)}</div>
-        <div class="ks">${c.tx>=1?"✅ Couvert":c.tx>=.8?"⚠️ Attention":"🔴 Critique"}</div></div>
+        <div class="ks">${c.tx>=1?"âœ… Couvert":c.tx>=.8?"âš ï¸ Attention":"ðŸ”´ Critique"}</div></div>
     </div>`;
 
   if(edit){
@@ -1257,15 +1257,15 @@ function renderMonth(){
       });
     });
     document.getElementById("btn-sv")?.addEventListener("click",async()=>{
-      ldr(true,"Sauvegarde…");const ok=await fbSave(mi);ldr(false);
-      toast(ok?"Sauvegardé dans Firebase !":"Sauvegarde locale (Firebase non configuré)",ok?"ok":"in");
+      ldr(true,"Sauvegardeâ€¦");const ok=await fbSave(mi);ldr(false);
+      toast(ok?"SauvegardÃ© dans Firebase !":"Sauvegarde locale (Firebase non configurÃ©)",ok?"ok":"in");
     });
   }
   document.getElementById("btn-pdf")?.addEventListener("click",()=>exportPDF(mi));
   document.getElementById("btn-xl")?.addEventListener("click",()=>exportExcel(mi));
 }
 
-/* ══ RÉCAP ANNUEL ═══════════════════════════════════════════ */
+/* â•â• RÃ‰CAP ANNUEL â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 function renderRecap(){
   const cs=MOIS.map((_,i)=>calc(i));
   const tR=sum(cs.map(c=>c.rR)),tC=sum(cs.map(c=>c.cR)),tS=tR-tC;
@@ -1277,17 +1277,17 @@ function renderRecap(){
       <div class="kpi gd"><div class="kl">Taux couverture</div><div class="kv">${fmtP(tC?tR/tC:0)}</div></div>
     </div>
     <div class="cg">
-      <div class="cc2"><div class="ct2">Ressources vs Charges — ${S.year}</div><div class="cw"><canvas id="r1"></canvas></div></div>
-      <div class="cc2"><div class="ct2">Évolution du Solde — ${S.year}</div><div class="cw"><canvas id="r2"></canvas></div></div>
+      <div class="cc2"><div class="ct2">Ressources vs Charges â€” ${S.year}</div><div class="cw"><canvas id="r1"></canvas></div></div>
+      <div class="cc2"><div class="ct2">Ã‰volution du Solde â€” ${S.year}</div><div class="cw"><canvas id="r2"></canvas></div></div>
     </div>
-    <div class="card"><div class="ch2"><span class="ctl bl">📊 Tableau Récapitulatif — ${S.year}</span></div>
+    <div class="card"><div class="ch2"><span class="ctl bl">ðŸ“Š Tableau RÃ©capitulatif â€” ${S.year}</span></div>
       <div style="overflow-x:auto;padding:.65rem">
         <table class="rt"><thead><tr><th>Indicateur</th>
           ${MOIS.map(m=>`<th>${m.slice(0,3)}</th>`).join("")}<th>TOTAL</th></tr></thead>
           <tbody>
-            <tr class="rr"><td>🟢 Ressources réelles</td>${cs.map(c=>`<td>${fmt(c.rR)}</td>`).join("")}<td><b>${fmt(tR)}</b></td></tr>
-            <tr class="rc"><td>🔴 Charges réelles</td>${cs.map(c=>`<td>${fmt(c.cR)}</td>`).join("")}<td><b>${fmt(tC)}</b></td></tr>
-            <tr class="rs"><td>💛 Solde net</td>
+            <tr class="rr"><td>ðŸŸ¢ Ressources rÃ©elles</td>${cs.map(c=>`<td>${fmt(c.rR)}</td>`).join("")}<td><b>${fmt(tR)}</b></td></tr>
+            <tr class="rc"><td>ðŸ”´ Charges rÃ©elles</td>${cs.map(c=>`<td>${fmt(c.cR)}</td>`).join("")}<td><b>${fmt(tC)}</b></td></tr>
+            <tr class="rs"><td>ðŸ’› Solde net</td>
               ${cs.map(c=>`<td class="${c.sR>=0?"pos":"neg"}">${fmt(c.sR)}</td>`).join("")}
               <td class="${tS>=0?"pos":"neg"}"><b>${fmt(tS)}</b></td></tr>
           </tbody></table>
@@ -1307,52 +1307,52 @@ function renderRecap(){
       scales:{y:{ticks:{callback:v=>(v/1000)+"K"}},x:{grid:{display:false}}}}});
 }
 
-/* ══ GESTION UTILISATEURS ═══════════════════════════════════
-   Accessible Admin + Trésorier.
-   Permet : créer, modifier rôle/nom, reset mdp, supprimer.
+/* â•â• GESTION UTILISATEURS â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   Accessible Admin + TrÃ©sorier.
+   Permet : crÃ©er, modifier rÃ´le/nom, reset mdp, supprimer.
    Tout se fait via Firebase Auth + Firestore sans passer par la console.
-══════════════════════════════════════════════════════════════ */
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 async function renderUsers(){
   if(!canMgr()){
     document.getElementById("content").innerHTML=`<div class="empty">
-      <div class="emo">🔒</div><h3>Accès restreint</h3><p>Réservé aux Admin et Trésorier.</p></div>`;
+      <div class="emo">ðŸ”’</div><h3>AccÃ¨s restreint</h3><p>RÃ©servÃ© aux Admin et TrÃ©sorier.</p></div>`;
     return;
   }
 
-  ldr(true,"Chargement des utilisateurs…");
+  ldr(true,"Chargement des utilisateursâ€¦");
   S.allUsers = window._fb?.configured ? await fbLoadAllUsers() : Object.entries(DEMOS).map(([k,v])=>({
     uid:k,username:k,name:v.n,role:v.r,email:v.email
   }));
   ldr(false);
 
   const listHTML=S.allUsers.length===0
-    ?`<div class="empty"><div class="emo">👥</div><h3>Aucun utilisateur</h3><p>Créez le premier compte ci-dessous.</p></div>`
+    ?`<div class="empty"><div class="emo">ðŸ‘¥</div><h3>Aucun utilisateur</h3><p>CrÃ©ez le premier compte ci-dessous.</p></div>`
     :`<div class="ugrid">${S.allUsers.map(u=>`
       <div class="uc">
         <div class="u-av2 ${u.role}">${(u.name||"?").split(" ").map(w=>w[0]).join("").slice(0,2)}</div>
         <div class="u-info">
-          <div class="u-nm2">${u.name||"—"}</div>
+          <div class="u-nm2">${u.name||"â€”"}</div>
           <div class="u-lo">@${u.username||u.email}</div>
           <span class="rtag ${u.role}" style="margin-top:.2rem;display:inline-block">${ROLES[u.role]?.label||u.role}</span>
         </div>
         <div class="u-act">
-          <button class="btn btn-gh btn-sm" onclick="editUser('${u.uid}')">✏️</button>
-          <button class="btn btn-rd btn-sm" onclick="deleteUserConfirm('${u.uid}','${u.name}')">🗑</button>
+          <button class="btn btn-gh btn-sm" onclick="editUser('${u.uid}')">âœï¸</button>
+          <button class="btn btn-rd btn-sm" onclick="deleteUserConfirm('${u.uid}','${u.name}')">ðŸ—‘</button>
         </div>
       </div>`).join("")}</div>`;
 
   document.getElementById("content").innerHTML=`
     <div class="abar">
-      <button class="btn btn-gn" id="btn-add-user">➕ Nouvel utilisateur</button>
+      <button class="btn btn-gn" id="btn-add-user">âž• Nouvel utilisateur</button>
       <div class="sp"></div>
       <span style="font-size:.8rem;color:var(--tx-m)">${S.allUsers.length} utilisateur(s)</span>
     </div>
-    ${!window._fb?.configured?`<div class="ibox gd"><span class="ic">⚠️</span>
-      <div>Mode démo actif. Connectez Firebase pour que les modifications soient persistantes.</div></div>`:""}
+    ${!window._fb?.configured?`<div class="ibox gd"><span class="ic">âš ï¸</span>
+      <div>Mode dÃ©mo actif. Connectez Firebase pour que les modifications soient persistantes.</div></div>`:""}
     ${listHTML}
-    <div class="ibox bl"><span class="ic">ℹ️</span>
-      <div>Les nouveaux utilisateurs reçoivent un email de bienvenue avec leur identifiant.
-      Ils peuvent changer leur mot de passe via <b>Mot de passe oublié</b> sur la page de connexion.</div></div>
+    <div class="ibox bl"><span class="ic">â„¹ï¸</span>
+      <div>Les nouveaux utilisateurs reÃ§oivent un email de bienvenue avec leur identifiant.
+      Ils peuvent changer leur mot de passe via <b>Mot de passe oubliÃ©</b> sur la page de connexion.</div></div>
   `;
 
   document.getElementById("btn-add-user")?.addEventListener("click",()=>openAddUserModal());
@@ -1360,52 +1360,52 @@ async function renderUsers(){
 
 function openAddUserModal(){
   const autoPwd=generatePwd();
-  openModal("➕ Créer un utilisateur",`
+  openModal("âž• CrÃ©er un utilisateur",`
     <div class="mfg"><label>Nom complet</label>
       <input type="text" id="m-name" placeholder="ex : Jean Kouassi"/></div>
     <div class="mfg"><label>Nom d'utilisateur (identifiant de connexion)</label>
       <input type="text" id="m-uname" placeholder="ex : jean_kouassi" autocomplete="off"/></div>
-    <div class="mfg"><label>Adresse e-mail (interne — non affichée)</label>
+    <div class="mfg"><label>Adresse e-mail (interne â€” non affichÃ©e)</label>
       <input type="email" id="m-email" placeholder="jean.kouassi@arr.ci"/></div>
     <div class="mfg">
       <label>Mot de passe provisoire
         <span style="font-size:.7rem;color:var(--tx-m);font-weight:400">
-          (l'utilisateur devra le changer à la première connexion)
+          (l'utilisateur devra le changer Ã  la premiÃ¨re connexion)
         </span>
       </label>
       <div class="pwd-wrap">
         <input type="text" id="m-pwd" value="${autoPwd}" autocomplete="new-password"
                oninput="evalPwd('m-pwd','m-bar','m-lbl','m-rules','')"/>
-        <span class="pwd-eye" onclick="toggleEye('m-pwd',this)" style="right:2.4rem">👁️</span>
-        <span class="pwd-eye" onclick="document.getElementById('m-pwd').value=generatePwd();evalPwd('m-pwd','m-bar','m-lbl','m-rules','')" title="Générer un nouveau mot de passe" style="cursor:pointer">🔄</span>
+        <span class="pwd-eye" onclick="toggleEye('m-pwd',this)" style="right:2.4rem">ðŸ‘ï¸</span>
+        <span class="pwd-eye" onclick="document.getElementById('m-pwd').value=generatePwd();evalPwd('m-pwd','m-bar','m-lbl','m-rules','')" title="GÃ©nÃ©rer un nouveau mot de passe" style="cursor:pointer">ðŸ”„</span>
       </div>
       <div class="pwd-strength-bar"><div class="pwd-strength-fill s0" id="m-bar"></div></div>
       <div class="pwd-strength-lbl" id="m-lbl" style="color:var(--tx-m)"></div>
       <div class="pwd-rules" id="m-rules-wrap">
-        <div class="pwd-rule" id="m-rules-r1"><span class="rc">✗</span>10 caractères min.</div>
-        <div class="pwd-rule" id="m-rules-r2"><span class="rc">✗</span>Une majuscule</div>
-        <div class="pwd-rule" id="m-rules-r3"><span class="rc">✗</span>Une minuscule</div>
-        <div class="pwd-rule" id="m-rules-r4"><span class="rc">✗</span>Un chiffre</div>
-        <div class="pwd-rule" id="m-rules-r5"><span class="rc">✗</span>Un caractère spécial</div>
+        <div class="pwd-rule" id="m-rules-r1"><span class="rc">âœ—</span>10 caractÃ¨res min.</div>
+        <div class="pwd-rule" id="m-rules-r2"><span class="rc">âœ—</span>Une majuscule</div>
+        <div class="pwd-rule" id="m-rules-r3"><span class="rc">âœ—</span>Une minuscule</div>
+        <div class="pwd-rule" id="m-rules-r4"><span class="rc">âœ—</span>Un chiffre</div>
+        <div class="pwd-rule" id="m-rules-r5"><span class="rc">âœ—</span>Un caractÃ¨re spÃ©cial</div>
       </div>
       <div style="font-size:.75rem;color:var(--tx-m);margin-top:.4rem;display:flex;align-items:center;gap:.3rem">
-        📋 <span id="m-pwd-copy" style="cursor:pointer;text-decoration:underline;color:var(--sk)"
-             onclick="navigator.clipboard.writeText(document.getElementById('m-pwd').value).then(()=>toast('Mot de passe copié !','in'))">
+        ðŸ“‹ <span id="m-pwd-copy" style="cursor:pointer;text-decoration:underline;color:var(--sk)"
+             onclick="navigator.clipboard.writeText(document.getElementById('m-pwd').value).then(()=>toast('Mot de passe copiÃ© !','in'))">
           Copier le mot de passe pour le transmettre
         </span>
       </div>
     </div>
-    <div class="mfg"><label>Rôle</label>
+    <div class="mfg"><label>RÃ´le</label>
       <select id="m-role">
         <option value="lecteur">Lecteur</option>
         <option value="pasteur">Pasteur</option>
-        <option value="tresorier">Trésorier</option>
+        <option value="tresorier">TrÃ©sorier</option>
         ${S.role==="admin"?'<option value="admin">Administrateur</option>':""}
       </select></div>
     <div class="modal-err" id="m-err"></div>
     <div class="modal-btns">
       <button class="btn btn-gh" onclick="closeModal()">Annuler</button>
-      <button class="btn btn-gn" id="btn-m-save">Créer le compte</button>
+      <button class="btn btn-gn" id="btn-m-save">CrÃ©er le compte</button>
     </div>`);
 
   // Evaluate the auto-generated password immediately
@@ -1421,10 +1421,10 @@ function openAddUserModal(){
     err.classList.remove("on");
     if(!name||!uname||!email||!pwd){err.textContent="Tous les champs sont obligatoires.";err.classList.add("on");return;}
     const v=validatePwd(pwd);
-    if(!v.ok){err.textContent="Le mot de passe ne respecte pas les règles de sécurité.";err.classList.add("on");return;}
+    if(!v.ok){err.textContent="Le mot de passe ne respecte pas les rÃ¨gles de sÃ©curitÃ©.";err.classList.add("on");return;}
     if(S.allUsers.find(u=>(u.username||"").toLowerCase()===uname)){
-      err.textContent="Ce nom d'utilisateur est déjà utilisé.";err.classList.add("on");return;}
-    ldr(true,"Création du compte…");
+      err.textContent="Ce nom d'utilisateur est dÃ©jÃ  utilisÃ©.";err.classList.add("on");return;}
+    ldr(true,"CrÃ©ation du compteâ€¦");
     if(window._fb?.configured){
       try{
         const{auth,db,createUserWithEmailAndPassword,ref,set}=window._fb;
@@ -1437,17 +1437,17 @@ function openAddUserModal(){
         // Ajouter dans USER_EMAIL_MAP local
         USER_EMAIL_MAP[uname]=email;
         ldr(false);closeModal();
-        toast(`✅ Compte créé : @${uname} — l'utilisateur devra changer son mot de passe à la 1ère connexion`);
+        toast(`âœ… Compte crÃ©Ã© : @${uname} â€” l'utilisateur devra changer son mot de passe Ã  la 1Ã¨re connexion`);
         await renderUsers();
       }catch(e){
         ldr(false);
-        const msgs={"auth/email-already-in-use":"Cet email est déjà utilisé.",
+        const msgs={"auth/email-already-in-use":"Cet email est dÃ©jÃ  utilisÃ©.",
           "auth/invalid-email":"Email invalide.","auth/weak-password":"Mot de passe trop faible."};
         err.textContent=msgs[e.code]||"Erreur : "+e.message;err.classList.add("on");
       }
     }else{
       S.allUsers.push({uid:uname,username:uname,name,role,email,mustChangePwd:true});
-      ldr(false);closeModal();toast(`Compte simulé : @${uname} (mode démo)`,"in");
+      ldr(false);closeModal();toast(`Compte simulÃ© : @${uname} (mode dÃ©mo)`,"in");
       await renderUsers();
     }
   });
@@ -1455,20 +1455,20 @@ function openAddUserModal(){
 
 function editUser(uid){
   const u=S.allUsers.find(x=>x.uid===uid);if(!u)return;
-  openModal(`✏️ Modifier — @${u.username||u.email}`,`
+  openModal(`âœï¸ Modifier â€” @${u.username||u.email}`,`
     <div class="mfg"><label>Nom complet</label>
       <input type="text" id="m-name" value="${u.name||""}"/></div>
     <div class="mfg"><label>Nom d'utilisateur</label>
       <input type="text" id="m-uname" value="${u.username||""}" ${uid===S.uid?"disabled":""}/></div>
-    <div class="mfg"><label>Rôle</label>
+    <div class="mfg"><label>RÃ´le</label>
       <select id="m-role">
         <option value="lecteur" ${u.role==="lecteur"?"selected":""}>Lecteur</option>
         <option value="pasteur" ${u.role==="pasteur"?"selected":""}>Pasteur</option>
-        <option value="tresorier" ${u.role==="tresorier"?"selected":""}>Trésorier</option>
+        <option value="tresorier" ${u.role==="tresorier"?"selected":""}>TrÃ©sorier</option>
         ${S.role==="admin"?`<option value="admin" ${u.role==="admin"?"selected":""}>Administrateur</option>`:""}
       </select></div>
     <div class="mfg">
-      <span class="chpwd-link" id="chpwd-tog">🔒 Réinitialiser le mot de passe</span>
+      <span class="chpwd-link" id="chpwd-tog">ðŸ”’ RÃ©initialiser le mot de passe</span>
       <div id="chpwd-sec" style="display:none;margin-top:.6rem">
         <input type="password" id="m-newpwd" placeholder="Nouveau mot de passe (min. 8 car.)"/>
       </div>
@@ -1492,49 +1492,49 @@ function editUser(uid){
     const err=document.getElementById("m-err");
     err.classList.remove("on");
     if(!name){err.textContent="Le nom est obligatoire.";err.classList.add("on");return;}
-    if(newpwd&&newpwd.length<8){err.textContent="Mot de passe trop court (min. 8 caractères).";err.classList.add("on");return;}
-    ldr(true,"Mise à jour…");
+    if(newpwd&&newpwd.length<8){err.textContent="Mot de passe trop court (min. 8 caractÃ¨res).";err.classList.add("on");return;}
+    ldr(true,"Mise Ã  jourâ€¦");
     if(window._fb?.configured){
       try{
         const{db,ref,set,get}=window._fb;
         const snap=await get(ref(db,"arr_users/"+uid));
         const existing=snap.exists()?snap.val():{};
         await set(ref(db,"arr_users/"+uid),{...existing,name,username:uname,role});
-        // Mettre à jour USER_EMAIL_MAP
+        // Mettre Ã  jour USER_EMAIL_MAP
         USER_EMAIL_MAP[uname]=existing.email||u.email;
-        toast("✅ Profil mis à jour !");
-        if(newpwd) toast("📧 Utilisez 'Mot de passe oublié' pour reset le mdp","in");
+        toast("âœ… Profil mis Ã  jour !");
+        if(newpwd) toast("ðŸ“§ Utilisez 'Mot de passe oubliÃ©' pour reset le mdp","in");
         ldr(false);closeModal();await renderUsers();
       }catch(e){ldr(false);err.textContent="Erreur : "+e.message;err.classList.add("on");}
     }else{
       const idx=S.allUsers.findIndex(x=>x.uid===uid);
       if(idx>=0)S.allUsers[idx]={...u,name,username:uname,role};
-      ldr(false);closeModal();toast("Profil mis à jour (mode démo)","in");await renderUsers();
+      ldr(false);closeModal();toast("Profil mis Ã  jour (mode dÃ©mo)","in");await renderUsers();
     }
   });
 }
 
 async function deleteUserConfirm(uid,name){
   if(uid===S.uid){toast("Vous ne pouvez pas supprimer votre propre compte.","er");return;}
-  openModal("🗑️ Confirmer la suppression",`
-    <div class="ibox rd"><span class="ic">⚠️</span>
+  openModal("ðŸ—‘ï¸ Confirmer la suppression",`
+    <div class="ibox rd"><span class="ic">âš ï¸</span>
       <div>Voulez-vous vraiment supprimer le compte de <b>${name}</b> ?<br/>
-      Cette action est <b>irréversible</b>.</div></div>
+      Cette action est <b>irrÃ©versible</b>.</div></div>
     <div class="modal-btns">
       <button class="btn btn-gh" onclick="closeModal()">Annuler</button>
-      <button class="btn btn-rd" id="btn-del-confirm">Supprimer définitivement</button>
+      <button class="btn btn-rd" id="btn-del-confirm">Supprimer dÃ©finitivement</button>
     </div>`);
   document.getElementById("btn-del-confirm").addEventListener("click",async()=>{
-    ldr(true,"Suppression…");
+    ldr(true,"Suppressionâ€¦");
     if(window._fb?.configured){
       try{
         const{db,ref,remove}=window._fb;
         await remove(ref(db,"arr_users/"+uid));
-        toast(`Compte supprimé.`);
+        toast(`Compte supprimÃ©.`);
       }catch(e){ldr(false);closeModal();toast("Erreur : "+e.message,"er");return;}
     }else{
       S.allUsers=S.allUsers.filter(u=>u.uid!==uid);
-      toast("Compte supprimé (mode démo)","in");
+      toast("Compte supprimÃ© (mode dÃ©mo)","in");
     }
     ldr(false);closeModal();await renderUsers();
   });
@@ -1542,81 +1542,81 @@ async function deleteUserConfirm(uid,name){
 /* make accessible from inline onclick */
 window.editUser=editUser;window.deleteUserConfirm=deleteUserConfirm;
 
-/* ══ GUIDE ══════════════════════════════════════════════════ */
+/* â•â• GUIDE â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 function renderGuide(){
   document.getElementById("content").innerHTML=`
-    ${[["🔑","Connexion par nom d'utilisateur",`
+    ${[["ðŸ”‘","Connexion par nom d'utilisateur",`
       <p>Chaque membre se connecte avec son <b>nom d'utilisateur</b> (ex : <code>tresorier_arr</code>)
-      et son mot de passe. L'adresse email est utilisée en interne uniquement.</p>
+      et son mot de passe. L'adresse email est utilisÃ©e en interne uniquement.</p>
       <p style="margin-top:.5rem">En cas d'oubli de mot de passe : cliquez sur
-      <b>Mot de passe oublié</b> sur la page de connexion → un email de réinitialisation est envoyé.</p>`],
-    ["📅","Sélection de l'exercice",`
-      <p>Le sélecteur d'exercice en haut de la barre latérale permet de basculer entre les années :
+      <b>Mot de passe oubliÃ©</b> sur la page de connexion â†’ un email de rÃ©initialisation est envoyÃ©.</p>`],
+    ["ðŸ“…","SÃ©lection de l'exercice",`
+      <p>Le sÃ©lecteur d'exercice en haut de la barre latÃ©rale permet de basculer entre les annÃ©es :
       <b>${YEARS.join(", ")}</b>.</p>
       <ul>
-        <li>Chaque exercice a ses propres données, entièrement indépendantes</li>
-        <li>En début d'année, sélectionnez le nouvel exercice et commencez la saisie</li>
-        <li>Les exercices passés restent accessibles en lecture pour l'historique</li>
+        <li>Chaque exercice a ses propres donnÃ©es, entiÃ¨rement indÃ©pendantes</li>
+        <li>En dÃ©but d'annÃ©e, sÃ©lectionnez le nouvel exercice et commencez la saisie</li>
+        <li>Les exercices passÃ©s restent accessibles en lecture pour l'historique</li>
       </ul>`],
-    ["👥","Gestion des utilisateurs",`
-      <p>L'<b>Admin</b> et le <b>Trésorier</b> peuvent gérer les comptes directement depuis l'application :</p>
+    ["ðŸ‘¥","Gestion des utilisateurs",`
+      <p>L'<b>Admin</b> et le <b>TrÃ©sorier</b> peuvent gÃ©rer les comptes directement depuis l'application :</p>
       <ul>
-        <li><b>Créer</b> un utilisateur : nom, identifiant, email, mot de passe, rôle</li>
-        <li><b>Modifier</b> le nom, l'identifiant ou le rôle d'un utilisateur</li>
+        <li><b>CrÃ©er</b> un utilisateur : nom, identifiant, email, mot de passe, rÃ´le</li>
+        <li><b>Modifier</b> le nom, l'identifiant ou le rÃ´le d'un utilisateur</li>
         <li><b>Supprimer</b> un compte</li>
-        <li><b>Reset mot de passe</b> via le lien « Mot de passe oublié »</li>
+        <li><b>Reset mot de passe</b> via le lien Â« Mot de passe oubliÃ© Â»</li>
       </ul>
-      <div class="ibox gd" style="margin-top:.6rem"><span class="ic">⚠️</span>
-        <div>La création de compte fonctionne entièrement sans passer par la console Firebase.
-        Il suffit que Firebase soit configuré dans l'application.</div></div>`],
-    ["📅","Saisie mensuelle",`<ol>
+      <div class="ibox gd" style="margin-top:.6rem"><span class="ic">âš ï¸</span>
+        <div>La crÃ©ation de compte fonctionne entiÃ¨rement sans passer par la console Firebase.
+        Il suffit que Firebase soit configurÃ© dans l'application.</div></div>`],
+    ["ðŸ“…","Saisie mensuelle",`<ol>
       <li>Cliquez sur le mois dans le menu de gauche</li>
-      <li>Renseignez <b>Prévision</b> (col. bleue) et <b>Réel</b> au fil des opérations</li>
-      <li>Les rubriques <b>violettes</b> (Dépenses Diverses) sont librement renommables</li>
+      <li>Renseignez <b>PrÃ©vision</b> (col. bleue) et <b>RÃ©el</b> au fil des opÃ©rations</li>
+      <li>Les rubriques <b>violettes</b> (DÃ©penses Diverses) sont librement renommables</li>
       <li>Cliquez <b>Sauvegarder</b> pour enregistrer dans Firebase</li>
     </ol>`],
-    ["🔔","Codes d'alerte",`
-      <p><span class="bdg ok">✅ OK</span> Prévision atteinte ou dépassée</p>
-      <p><span class="bdg wn">⚠️ Attention</span> Entre 80 % et 100 % de la prévision</p>
-      <p><span class="bdg dg">🔴 Alerte</span> Moins de 80 % de la prévision</p>`],
+    ["ðŸ””","Codes d'alerte",`
+      <p><span class="bdg ok">âœ… OK</span> PrÃ©vision atteinte ou dÃ©passÃ©e</p>
+      <p><span class="bdg wn">âš ï¸ Attention</span> Entre 80 % et 100 % de la prÃ©vision</p>
+      <p><span class="bdg dg">ðŸ”´ Alerte</span> Moins de 80 % de la prÃ©vision</p>`],
     ].map(([i,t,b])=>`<div class="gsec"><h3>${i} ${t}</h3>${b}</div>`).join("")}`;
 }
 
-/* ══ EXPORT EXCEL ════════════════════════════════════════════ */
+/* â•â• EXPORT EXCEL â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 function exportExcel(mi){
   const XLSX=window.XLSX;
-  if(!XLSX){toast("Bibliothèque Excel non chargée","er");return;}
+  if(!XLSX){toast("BibliothÃ¨que Excel non chargÃ©e","er");return;}
   const c=calc(mi),m=MOIS[mi],d=S.data[S.year][mi];
   const wb=XLSX.utils.book_new();
 
-  // ── Styles helpers ──
+  // â”€â”€ Styles helpers â”€â”€
   const hdr=(v)=>({v,t:"s",s:{font:{bold:true,color:{rgb:"FFFFFF"}},fill:{fgColor:{rgb:"1A2E5A"}},alignment:{horizontal:"center"}}});
   const sec=(v,color="1A2E5A")=>({v,t:"s",s:{font:{bold:true,color:{rgb:"FFFFFF"}},fill:{fgColor:{rgb:color}}}});
   const num=(v)=>({v:v||0,t:"n",s:{numFmt:'#,##0" FCFA"'}});
   const pct=(v)=>({v:v||0,t:"n",s:{numFmt:'0.0"%"'}});
   const lbl=(v,color=null)=>({v,t:"s",s:color?{font:{color:{rgb:color}}}:{}});
 
-  // ── Feuille mensuelle ──
+  // â”€â”€ Feuille mensuelle â”€â”€
   const rows=[];
 
   // Titre
-  rows.push([{v:`ASSEMBLÉE ROYALE DES RACHETÉS — TRÉSORERIE ${m.toUpperCase()} ${S.year}`,t:"s",
+  rows.push([{v:`ASSEMBLÃ‰E ROYALE DES RACHETÃ‰S â€” TRÃ‰SORERIE ${m.toUpperCase()} ${S.year}`,t:"s",
     s:{font:{bold:true,sz:14,color:{rgb:"1A2E5A"}}}}]);
-  rows.push([{v:`Généré le ${new Date().toLocaleDateString("fr-FR")} · @${S.login}`,t:"s",
+  rows.push([{v:`GÃ©nÃ©rÃ© le ${new Date().toLocaleDateString("fr-FR")} Â· @${S.login}`,t:"s",
     s:{font:{italic:true,color:{rgb:"888888"}}}}]);
   rows.push([]);
 
   // KPIs
-  rows.push([hdr("INDICATEUR"),hdr("PRÉVISION"),hdr("RÉEL"),hdr("ÉCART"),hdr("% RÉALISATION")]);
-  rows.push([lbl("💰 Total Ressources","2D5016"),num(c.rP),num(c.rR),num(c.rR-c.rP),pct(c.rP?c.rR/c.rP*100:0)]);
-  rows.push([lbl("💸 Total Charges","C62828"),num(c.cP),num(c.cR),num(c.cR-c.cP),pct(c.cP?c.cR/c.cP*100:0)]);
-  rows.push([lbl("⚖️ Solde net",c.sR>=0?"2D5016":"C62828"),num(c.sP),num(c.sR),"",""]);
+  rows.push([hdr("INDICATEUR"),hdr("PRÃ‰VISION"),hdr("RÃ‰EL"),hdr("Ã‰CART"),hdr("% RÃ‰ALISATION")]);
+  rows.push([lbl("ðŸ’° Total Ressources","2D5016"),num(c.rP),num(c.rR),num(c.rR-c.rP),pct(c.rP?c.rR/c.rP*100:0)]);
+  rows.push([lbl("ðŸ’¸ Total Charges","C62828"),num(c.cP),num(c.cR),num(c.cR-c.cP),pct(c.cP?c.cR/c.cP*100:0)]);
+  rows.push([lbl("âš–ï¸ Solde net",c.sR>=0?"2D5016":"C62828"),num(c.sP),num(c.sR),"",""]);
   rows.push([]);
 
   // Section helper
   function addSection(title,arr,color){
     rows.push([sec(title,color),"","","",""]);
-    rows.push([hdr("Rubrique"),hdr("Prévision (FCFA)"),hdr("Réel (FCFA)"),hdr("Écart (FCFA)"),hdr("% Réal.")]);
+    rows.push([hdr("Rubrique"),hdr("PrÃ©vision (FCFA)"),hdr("RÃ©el (FCFA)"),hdr("Ã‰cart (FCFA)"),hdr("% RÃ©al.")]);
     arr.forEach(r=>{
       const e=r.reel-r.prev;
       const p=r.prev?r.reel/r.prev*100:0;
@@ -1643,16 +1643,16 @@ function exportExcel(mi){
   }
 
   // CHARGES
-  rows.push([{v:"═══ CHARGES & DÉPENSES ═══",t:"s",s:{font:{bold:true,sz:12,color:{rgb:"8B0000"}}}}]);
+  rows.push([{v:"â•â•â• CHARGES & DÃ‰PENSES â•â•â•",t:"s",s:{font:{bold:true,sz:12,color:{rgb:"8B0000"}}}}]);
   rows.push([]);
-  addSection("💼 Salaires des Pasteurs",d.salaires,"8B0000");
-  addSection("🏠 Loyers & Locations",d.loyers,"8B3A00");
-  addSection("⚡ Factures & Charges fixes",d.factures,"5B4400");
-  addSection("🟣 Dépenses Diverses",d.divers,"5B2D8E");
+  addSection("ðŸ’¼ Salaires des Pasteurs",d.salaires,"8B0000");
+  addSection("ðŸ  Loyers & Locations",d.loyers,"8B3A00");
+  addSection("âš¡ Factures & Charges fixes",d.factures,"5B4400");
+  addSection("ðŸŸ£ DÃ©penses Diverses",d.divers,"5B2D8E");
 
   // Total charges
   rows.push([
-    {v:"🔴 TOTAL GÉNÉRAL CHARGES",t:"s",s:{font:{bold:true,color:{rgb:"FFFFFF"}},fill:{fgColor:{rgb:"8B0000"}}}},
+    {v:"ðŸ”´ TOTAL GÃ‰NÃ‰RAL CHARGES",t:"s",s:{font:{bold:true,color:{rgb:"FFFFFF"}},fill:{fgColor:{rgb:"8B0000"}}}},
     {v:c.cP,t:"n",s:{font:{bold:true,color:{rgb:"FFFFFF"}},numFmt:'#,##0" FCFA"',fill:{fgColor:{rgb:"8B0000"}}}},
     {v:c.cR,t:"n",s:{font:{bold:true,color:{rgb:"FFFFFF"}},numFmt:'#,##0" FCFA"',fill:{fgColor:{rgb:"8B0000"}}}},
     {v:c.cR-c.cP,t:"n",s:{font:{bold:true,color:{rgb:"FFFFFF"}},numFmt:'#,##0" FCFA"',fill:{fgColor:{rgb:"8B0000"}}}},
@@ -1661,15 +1661,15 @@ function exportExcel(mi){
   rows.push([]);rows.push([]);
 
   // RESSOURCES
-  rows.push([{v:"═══ RESSOURCES & RECETTES ═══",t:"s",s:{font:{bold:true,sz:12,color:{rgb:"2D5016"}}}}]);
+  rows.push([{v:"â•â•â• RESSOURCES & RECETTES â•â•â•",t:"s",s:{font:{bold:true,sz:12,color:{rgb:"2D5016"}}}}]);
   rows.push([]);
-  addSection("⛪ Cultes du Dimanche",d.dimanche,"2D5016");
-  addSection("📅 Cultes en Semaine",d.semaine,"1A5C38");
-  addSection("💳 Offrandes Spéciales",d.speciales,"0277BD");
+  addSection("â›ª Cultes du Dimanche",d.dimanche,"2D5016");
+  addSection("ðŸ“… Cultes en Semaine",d.semaine,"1A5C38");
+  addSection("ðŸ’³ Offrandes SpÃ©ciales",d.speciales,"0277BD");
 
   // Total ressources
   rows.push([
-    {v:"🟢 TOTAL GÉNÉRAL RESSOURCES",t:"s",s:{font:{bold:true,color:{rgb:"FFFFFF"}},fill:{fgColor:{rgb:"2D5016"}}}},
+    {v:"ðŸŸ¢ TOTAL GÃ‰NÃ‰RAL RESSOURCES",t:"s",s:{font:{bold:true,color:{rgb:"FFFFFF"}},fill:{fgColor:{rgb:"2D5016"}}}},
     {v:c.rP,t:"n",s:{font:{bold:true,color:{rgb:"FFFFFF"}},numFmt:'#,##0" FCFA"',fill:{fgColor:{rgb:"2D5016"}}}},
     {v:c.rR,t:"n",s:{font:{bold:true,color:{rgb:"FFFFFF"}},numFmt:'#,##0" FCFA"',fill:{fgColor:{rgb:"2D5016"}}}},
     {v:c.rR-c.rP,t:"n",s:{font:{bold:true,color:{rgb:"FFFFFF"}},numFmt:'#,##0" FCFA"',fill:{fgColor:{rgb:"2D5016"}}}},
@@ -1689,26 +1689,26 @@ function exportExcel(mi){
 
   XLSX.utils.book_append_sheet(wb,ws,`${m.slice(0,3)} ${S.year}`);
 
-  // ── Feuille récap annuel ──
+  // â”€â”€ Feuille rÃ©cap annuel â”€â”€
   const cs=MOIS.map((_,i)=>calc(i));
   const recapRows=[];
-  recapRows.push([{v:`RÉCAPITULATIF ANNUEL ${S.year}`,t:"s",s:{font:{bold:true,sz:14,color:{rgb:"1A2E5A"}}}}]);
+  recapRows.push([{v:`RÃ‰CAPITULATIF ANNUEL ${S.year}`,t:"s",s:{font:{bold:true,sz:14,color:{rgb:"1A2E5A"}}}}]);
   recapRows.push([]);
   const rHdr=[hdr("Indicateur"),...MOIS.map(m=>hdr(m.slice(0,3))),hdr("TOTAL")];
   recapRows.push(rHdr);
   recapRows.push([
-    lbl("🟢 Ressources réelles","2D5016"),
+    lbl("ðŸŸ¢ Ressources rÃ©elles","2D5016"),
     ...cs.map(c=>num(c.rR)),
     {v:cs.reduce((s,c)=>s+c.rR,0),t:"n",s:{font:{bold:true},numFmt:'#,##0" FCFA"'}}
   ]);
   recapRows.push([
-    lbl("🔴 Charges réelles","8B0000"),
+    lbl("ðŸ”´ Charges rÃ©elles","8B0000"),
     ...cs.map(c=>num(c.cR)),
     {v:cs.reduce((s,c)=>s+c.cR,0),t:"n",s:{font:{bold:true},numFmt:'#,##0" FCFA"'}}
   ]);
   const totS=cs.reduce((s,c)=>s+c.sR,0);
   recapRows.push([
-    {v:"💛 Solde net",t:"s",s:{font:{bold:true}}},
+    {v:"ðŸ’› Solde net",t:"s",s:{font:{bold:true}}},
     ...cs.map(c=>({v:c.sR,t:"n",s:{font:{bold:true,color:{rgb:c.sR>=0?"2D5016":"C62828"}},numFmt:'#,##0" FCFA"'}})),
     {v:totS,t:"n",s:{font:{bold:true,color:{rgb:totS>=0?"2D5016":"C62828"}},numFmt:'#,##0" FCFA"'}}
   ]);
@@ -1716,25 +1716,25 @@ function exportExcel(mi){
   const wsR=XLSX.utils.aoa_to_sheet(recapRows);
   wsR["!cols"]=[{wch:22},...Array(13).fill({wch:14})];
   wsR["!merges"]=[{s:{r:0,c:0},e:{r:0,c:13}}];
-  XLSX.utils.book_append_sheet(wb,wsR,`Récap ${S.year}`);
+  XLSX.utils.book_append_sheet(wb,wsR,`RÃ©cap ${S.year}`);
 
-  // Télécharger
+  // TÃ©lÃ©charger
   XLSX.writeFile(wb,`Tresorerie_ARR_${m.normalize("NFD").replace(/[\u0300-\u036f]/g,"")}_${S.year}.xlsx`);
-  toast(`Excel ${m} ${S.year} exporté !`);
+  toast(`Excel ${m} ${S.year} exportÃ© !`);
 }
 
-/* ══ EXPORT PDF ═════════════════════════════════════════════ */
+/* â•â• EXPORT PDF â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 function exportPDF(mi){
   const{jsPDF}=window.jspdf;
   const doc=new jsPDF({orientation:"portrait",unit:"mm",format:"a4"});
   const c=calc(mi),m=MOIS[mi],d=S.data[S.year][mi];
   doc.setFillColor(26,46,90);doc.rect(0,0,210,30,"F");
   doc.setFont("helvetica","bold");doc.setFontSize(15);doc.setTextColor(201,162,39);
-  doc.text("ASSEMBLÉE ROYALE DES RACHETÉS",105,11,{align:"center"});
+  doc.text("ASSEMBLÃ‰E ROYALE DES RACHETÃ‰S",105,11,{align:"center"});
   doc.setFontSize(10);doc.setTextColor(210,225,240);
-  doc.text(`Rapport de Trésorerie — ${m} ${S.year}`,105,19,{align:"center"});
+  doc.text(`Rapport de TrÃ©sorerie â€” ${m} ${S.year}`,105,19,{align:"center"});
   doc.setFontSize(8);doc.setTextColor(140,165,200);
-  doc.text(`Généré le ${new Date().toLocaleDateString("fr-FR")} · @${S.login}`,105,26,{align:"center"});
+  doc.text(`GÃ©nÃ©rÃ© le ${new Date().toLocaleDateString("fr-FR")} Â· @${S.login}`,105,26,{align:"center"});
   let y=37;
   [[`Ressources`,fmt(c.rR),[45,80,22]],[`Charges`,fmt(c.cR),[139,0,0]],
    [`Solde net`,fmt(c.sR),c.sR>=0?[45,80,22]:[180,40,40]],[`Taux couv.`,fmtP(c.tx),c.tx>=1?[45,80,22]:c.tx>=.8?[180,120,0]:[180,40,40]]
@@ -1749,10 +1749,10 @@ function exportPDF(mi){
     if(y>262){doc.addPage();y=18;}
     doc.setFillColor(26,46,90);doc.rect(14,y,182,8,"F");
     doc.setFont("helvetica","bold");doc.setFontSize(8.5);doc.setTextColor(255,255,255);
-    doc.text(title.replace(/[🟣⚡💧🌐💼🏠📅⛪💳]/g,"").trim(),17,y+5.5);y+=9;
+    doc.text(title.replace(/[ðŸŸ£âš¡ðŸ’§ðŸŒðŸ’¼ðŸ ðŸ“…â›ªðŸ’³]/g,"").trim(),17,y+5.5);y+=9;
     doc.setFillColor(238,242,255);doc.rect(14,y,182,7,"F");
     doc.setFont("helvetica","bold");doc.setFontSize(7);doc.setTextColor(26,46,90);
-    ["Rubrique","Prévision","Réel","Écart","% Réal."].forEach((h,i)=>doc.text(h,[17,80,116,143,168][i],y+5));y+=8;
+    ["Rubrique","PrÃ©vision","RÃ©el","Ã‰cart","% RÃ©al."].forEach((h,i)=>doc.text(h,[17,80,116,143,168][i],y+5));y+=8;
     rows.forEach((r,ri)=>{
       if(y>272){doc.addPage();y=18;}
       doc.setFillColor(...(ri%2===0?[255,255,255]:[248,250,255]));doc.rect(14,y,182,7,"F");
@@ -1764,26 +1764,26 @@ function exportPDF(mi){
       doc.text(String(r[4]),193,y+5,{align:"right"});y+=7;
     });y+=4;
   }
-  const mkR=arr=>arr.map(r=>[r.label.replace(/[🟣⚡💧🌐]/g,"").trim(),fmt(r.prev),fmt(r.reel),fmt(r.reel-r.prev),fmtP(r.prev?r.reel/r.prev:0)]);
-  sec("CHARGES — SALAIRES",mkR(d.salaires));sec("CHARGES — LOYERS",mkR(d.loyers));
-  sec("CHARGES — FACTURES",mkR(d.factures));sec("CHARGES — DIVERS",mkR(d.divers));
-  sec("RESSOURCES — DIMANCHES",mkR(d.dimanche));sec("RESSOURCES — SEMAINE",mkR(d.semaine));
-  sec("RESSOURCES — OFFRANDES SPÉCIALES",mkR(d.speciales));
+  const mkR=arr=>arr.map(r=>[r.label.replace(/[ðŸŸ£âš¡ðŸ’§ðŸŒ]/g,"").trim(),fmt(r.prev),fmt(r.reel),fmt(r.reel-r.prev),fmtP(r.prev?r.reel/r.prev:0)]);
+  sec("CHARGES â€” SALAIRES",mkR(d.salaires));sec("CHARGES â€” LOYERS",mkR(d.loyers));
+  sec("CHARGES â€” FACTURES",mkR(d.factures));sec("CHARGES â€” DIVERS",mkR(d.divers));
+  sec("RESSOURCES â€” DIMANCHES",mkR(d.dimanche));sec("RESSOURCES â€” SEMAINE",mkR(d.semaine));
+  sec("RESSOURCES â€” OFFRANDES SPÃ‰CIALES",mkR(d.speciales));
   const tot=doc.internal.getNumberOfPages();
   for(let p=1;p<=tot;p++){
     doc.setPage(p);doc.setFillColor(26,46,90);doc.rect(0,285,210,12,"F");
     doc.setFont("helvetica","normal");doc.setFontSize(7);doc.setTextColor(201,162,39);
-    doc.text(`Assemblée Royale des Rachetés · Trésorerie ${m} ${S.year} · Page ${p}/${tot}`,105,292,{align:"center"});
+    doc.text(`AssemblÃ©e Royale des RachetÃ©s Â· TrÃ©sorerie ${m} ${S.year} Â· Page ${p}/${tot}`,105,292,{align:"center"});
   }
   doc.save(`Tresorerie_ARR_${m.normalize("NFD").replace(/[\u0300-\u036f]/g,"")}_${S.year}.pdf`);
-  toast(`PDF ${m} ${S.year} exporté !`);
+  toast(`PDF ${m} ${S.year} exportÃ© !`);
 }
 
-/* ══ INIT ═══════════════════════════════════════════════════ */
+/* â•â• INIT â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 document.getElementById("m-sel").value=S.mi;
-// Cacher le loader immédiatement au démarrage
+// Cacher le loader immÃ©diatement au dÃ©marrage
 ldr(false);
-// Si Firebase ne répond pas dans 3 secondes → afficher le login
+// Si Firebase ne rÃ©pond pas dans 3 secondes â†’ afficher le login
 setTimeout(()=>{
   if(document.getElementById("ldr").classList.contains("on")){
     ldr(false);
